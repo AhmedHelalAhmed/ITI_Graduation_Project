@@ -26,7 +26,8 @@ class InfoController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        return view('info.create', ['categories' => $categories,]);
     }
 
     /**
