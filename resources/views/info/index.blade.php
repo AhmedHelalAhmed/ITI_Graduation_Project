@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1>All info</h1>
-        <a class="btn btn-success" href="/infos/create">Create info</a>
+        <a class="btn btn-success" href="/info/create">Create info</a>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">Recent info</h6>
             @foreach ($info as $info_element)

@@ -23,4 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //info
 Route::get('/info', 'InfoController@index')->name('info.index');
-
+Route::get('info/create', 'InfoController@create')->name('info.create');
