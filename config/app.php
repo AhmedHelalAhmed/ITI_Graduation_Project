@@ -159,6 +159,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //package for like comment and reply
+        risul\LaravelLikeComment\LikeCommentServiceProvider::class,
 
     ],
 

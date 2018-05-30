@@ -19,6 +19,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Comment - like  -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+    <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
+
+    <!-- Comment - like  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
+
 </head>
 <body>
 <div id="app">
@@ -27,7 +39,8 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('Active social', 'Active social') }}
             </a>
-            <a class="navbar-brand" href="{{ url('/home') }}">Home</a> <a class="navbar-brand" href="{{ route('info.index') }}">Info</a>
+            <a class="navbar-brand" href="{{ url('/home') }}">Home</a> <a class="navbar-brand"
+                                                                          href="{{ route('info.index') }}">Info</a>
             <a class="navbar-brand" href="#">Questions</a>
             <a class="navbar-brand" href="#">profile</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -79,5 +92,6 @@
         @yield('content')
     </main>
 </div>
+
 </body>
 </html>

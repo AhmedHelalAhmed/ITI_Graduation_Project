@@ -39,6 +39,7 @@
                 </p>
             </div>
         </div>
-
+{{--        @include('laravelLikeComment::like', ['like_item_id' => $info->id ])--}}
+        @include('laravelLikeComment::comment', ['comment_item_id' => $info->id ])
     </div>
 @endsection
