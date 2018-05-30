@@ -76,6 +76,9 @@ class InfoController extends Controller
 
         //store the data
         Article::create($data);
+
+        
+        return redirect(route('info.index'));
     }
 
     /**
