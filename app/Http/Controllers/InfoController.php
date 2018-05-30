@@ -35,6 +35,22 @@ class InfoController extends Controller
     }
 
     /**
+     * Generate new name for the file
+     *
+     * @param  a file $file
+     * @return a new name for the file concatenated with time
+     */
+
+    private  function _get_file_stored_name($file):string
+    {
+        $original_name = $file->getClientOriginalName();
+        $original_name_without_extension = explode('.', $original_name)[0];
+        $original_extension = explode('.', $original_name)[1];
+        $store_name = $original_name_without_extension . time() .'.'. $original_extension;
+        return $store_name;
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
@@ -56,30 +72,29 @@ class InfoController extends Controller
 
         //for cover
         if ($request->hasFile('cover')) {
-            $cover_file = $request->file('cover');
-            $original_cover_name = $cover_file->getClientOriginalName();
-            $store_cover_name = $original_cover_name . time();
-            Storage::putFileAs('public/images', $cover_file, $store_cover_name);
+            $cover_file=$request->file('cover');
+            $data['cover'] = $this->_get_file_stored_name($cover_file);
+            Storage::putFileAs('public/images', $cover_file, $data['cover']);
         }
-        $data['cover'] = $store_cover_name;
 
 
         //for attachment
         if ($request->hasFile('attachment')) {
             $attachment_file = $request->file('attachment');
-            $original_attachment_name = $attachment_file->getClientOriginalName();
-            $store_attachment_name = $original_attachment_name . time();
-            Storage::putFileAs('public/attachments', $attachment_file, $store_attachment_name);
+            $data['attachment'] = $this->_get_file_stored_name($attachment_file);
+            Storage::putFileAs('public/attachments', $attachment_file, $data['attachment']);
         }
-        $data['attachment'] = $store_attachment_name;
 
 
         //store the data
         Article::create($data);
 
-        
+
         return redirect(route('info.index'));
     }
+
+
+
 
     /**
      * Display the specified resource.
