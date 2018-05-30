@@ -27,7 +27,7 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('Active social', 'Active social') }}
             </a>
-            <a class="navbar-brand" href="{{ url('/home') }}">Home</a> <a class="navbar-brand" href="#">Info</a>
+            <a class="navbar-brand" href="{{ url('/home') }}">Home</a> <a class="navbar-brand" href="{{ route('info.index') }}">Info</a>
             <a class="navbar-brand" href="#">Questions</a>
             <a class="navbar-brand" href="#">profile</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
