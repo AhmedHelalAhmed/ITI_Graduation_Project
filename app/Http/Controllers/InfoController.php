@@ -69,9 +69,9 @@ class InfoController extends Controller
             $attachment_file = $request->file('attachment');
             $original_attachment_name = $attachment_file->getClientOriginalName();
             $store_attachment_name = $original_attachment_name . time();
-            Storage::putFileAs('public/images', $attachment_file, $store_attachment_name);
+            Storage::putFileAs('public/attachments', $attachment_file, $store_attachment_name);
         }
-        $data['attachment'] = $store_cover_name;
+        $data['attachment'] = $store_attachment_name;
 
 
         //store the data
