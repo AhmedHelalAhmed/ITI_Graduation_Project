@@ -43,16 +43,16 @@ class InfoController extends Controller
     public function store(Request $request)
     {
         //set the data
-        $data=$request->all();
+        $data = $request->all();
 
         //for set the current user . . user_id
         $user_id = Auth::user()->id;
-        $data['user_id']=$user_id;
+        $data['user_id'] = $user_id;
 
 
         //for set the article type . . type_id
         $type_id = 1; #1 means info
-        $data['type_id']=$type_id;
+        $data['type_id'] = $type_id;
 
         //for cover
         if ($request->hasFile('cover')) {
@@ -61,7 +61,7 @@ class InfoController extends Controller
             $store_cover_name = $original_cover_name . time();
             Storage::putFileAs('public/images', $cover_file, $store_cover_name);
         }
-        $data['cover']=$store_cover_name;
+        $data['cover'] = $store_cover_name;
 
 
         //for attachment
@@ -71,7 +71,7 @@ class InfoController extends Controller
             $store_attachment_name = $original_attachment_name . time();
             Storage::putFileAs('public/images', $attachment_file, $store_attachment_name);
         }
-        $data['attachment']=$store_cover_name;
+        $data['attachment'] = $store_cover_name;
 
 
         //store the data
@@ -86,8 +86,12 @@ class InfoController extends Controller
      */
     public function show($id)
     {
-        //
-
+        try {
+            $info = Article::findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            return Response::view('errors.404');
+        }
+        return view('info.show', ['info' => $info]);
     }
 
     /**
