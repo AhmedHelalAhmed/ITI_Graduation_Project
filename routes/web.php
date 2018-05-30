@@ -12,9 +12,8 @@
 */
 
 Route::get('/', function () {
-
-    return view('welcome');
-
+    $info=\App\Article::where("type_id","1")->get();
+    return view('welcome',['info' => $info,]);
 });
 
 Auth::routes();
