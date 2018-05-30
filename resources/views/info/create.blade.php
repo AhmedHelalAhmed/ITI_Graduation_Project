@@ -15,7 +15,7 @@
 
     <div class="container" style="margin-top: 70px;width: 50%;">
 
-        <form action="/info" method="post">
+        <form action="{{ Route("info.store")  }}" method="post" enctype="multipart/form-data">
 
             {{--for security--}}
             {{csrf_field()}}
@@ -45,7 +45,22 @@
                 </select>
             </div>
 
+            {{--cover--}}
+            <div class="form-group">
+                <label for="exampleFormControlCover">Cover</label>
+                <input type="file" class="form-control" id="exampleInputFile" aria-describedby="FileHelp" name="cover">
+            </div>
 
+
+            {{--attachment--}}
+            <div class="form-group">
+                <label for="exampleFormControlattachment">Attachment</label>
+                <input type="file" class="form-control" id="exampleInputAttachment" aria-describedby="AttachmentHelp"
+                       name="attachment">
+            </div>
+
+
+            {{--submit button--}}
             <button type="submit" class="btn btn-success">Add info</button>
 
 
