@@ -1,275 +1,150 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        @include('layouts.head')
-    </head>
+<head>
+    @include('layouts.head')
+</head>
 
-    <body>
+<body data-spy="scroll" data-target="#minimenu">
+<nav id="mainNav" class='navbar navbar-full navbar-dark bg-light navbar-fixed-top'>
+    <button class="navbar-toggler hidden-sm-up light float-xs-right" type="button" data-toggle="collapse"
+            data-target="#minimenu"></button>
+    <article id="minimenu" class="collapse navbar-toggleable-xs">
+        <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#recent_info">Recent info</a></li>
+            <!-- Authentication Links -->
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+            @else
+                <li class="nav-item dropdown">
 
-    <nav id="mainNav" class='navbar navbar-full navbar-dark bg-light navbar-fixed-top'>
-        <button class="navbar-toggler hidden-sm-up light float-xs-right" type="button" data-toggle="collapse"
-                data-target="#minimenu"></button>
-        <article id="minimenu" class="collapse navbar-toggleable-xs">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-            <ul class="nav navbar-nav">
-                <li class="nav-item"><a class="navbar-brand" href="{{  url('/') }} ">Active social</a></li>
+                        {{ Auth::user()->name }} <span class="caret"></span>
 
-                <li class="nav-item"><a class="nav-link" href="{{ route('info.index') }}">Information</a></li>
+                    </a>
 
-            </ul>
-        </article>
-    </nav>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-    <header class="htop">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-        <div class="container">
-            <h1>Active social</h1>
-            <hr>
-            <p>
-                يمكنك أن
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+        </ul>
+    </article>
+</nav>
 
-            </p>
-            <p>
-                تنشر معلوماتك و تجاربك و الأخبار التى تريد نشرها
-
-            </p>
-            <p>
-                طرح أسئلة
-
-            </p>
-            <p>
-                تقييم ما يقدمه الاعضاء الآخرين
-
-            </p>
-            <p>
-                تقييم الموضوع و التعليق عليه
-
-            </p>
-        </div>
-    </header>
-    </header>
+<header class="htop">
+    <div class="container">
+        <h1>Active social</h1>
+        <hr>
+        <p>
+            The One Place to be sure the information, news you have is correct
+        </p>
+    </div>
+</header>
 
 
-    <section id="about" class="msection">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                        massa. </p>
-                    <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                    </p>
-                    <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis.
-                    </p>
-                </div>
+<section id="about" class="msection">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 text-xs-center">
+                <h3>Share</h3>
+                <p>Your experience and gain the experience</p>
             </div>
-
-            <div class="row">
-                <div class="col-md-3 text-xs-center">
-                    <h3>One</h3>
-                    <p>felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                </div>
-                <div class="col-md-3 text-xs-center">
-                    <h3>Two</h3>
-                    <p>felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                </div>
-                <div class="col-md-3 text-xs-center">
-                    <h3>Three</h3>
-                    <p>felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                </div>
-                <div class="col-md-3 text-xs-center">
-                    <h3>Four</h3>
-                    <p>felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                </div>
-
+            <div class="col-md-3 text-xs-center">
+                <h3>Ask</h3>
+                <p>people to get answer and gain knowledge</p>
             </div>
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                        massa. </p>
-                    <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-                    </p>
-                    <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis.
-                    </p>
-                </div>
+            <div class="col-md-3 text-xs-center">
+                <h3>Rate</h3>
+                <p>any news or information you see, approve or disapprove it</p>
+            </div>
+            <div class="col-md-3 text-xs-center">
+                <h3>Make friends
+                </h3>
+                <p>add other users as friend and enlarge your community</p>
             </div>
 
         </div>
 
-    </section>
-
-
-    <section id="products" class="msection">
-        <div class="container">
-            <div class="row">
-
-
-                <div class="col-md-4 text-xs-center">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title">One</h3>
-                        </div>
-
-                        <img src="https://placehold.it/600x600" class="img-fluid"/>
-                        <div class="card-block">
-                            <p class="card-text">felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="col-md-4 text-xs-center">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title">One</h3>
-                        </div>
-
-                        <img src="https://placehold.it/600x600" class="img-fluid"/>
-                        <div class="card-block">
-                            <p class="card-text">felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="col-md-4 text-xs-center">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title">One</h3>
-                        </div>
-
-                        <img src="https://placehold.it/600x600" class="img-fluid"/>
-                        <div class="card-block">
-                            <p class="card-text">felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-            <div class="row">
-
-                <div class="col-md-4 text-xs-center">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title">One</h3>
-                        </div>
-
-                        <img src="https://placehold.it/600x600" class="img-fluid"/>
-                        <div class="card-block">
-                            <p class="card-text">felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="col-md-4 text-xs-center">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title">One</h3>
-                        </div>
-
-                        <img src="https://placehold.it/600x600" class="img-fluid"/>
-                        <div class="card-block">
-                            <p class="card-text">felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="col-md-4 text-xs-center">
-                    <div class="card">
-                        <div class="card-block">
-                            <h3 class="card-title">One</h3>
-                        </div>
-
-                        <img src="https://placehold.it/600x600" class="img-fluid"/>
-                        <div class="card-block">
-                            <p class="card-text">felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section id="more" class="msection">
-        <div class="container">
-            <div class="row">
-
-
-                <div class="col-md-12">
-                    <h3>One</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                        massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
-                        quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
-
-                    <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
-                        imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
-                        Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>
-
-                    <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                        viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum.
-                        Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
-
-                    <p>Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper
-                        libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
-                        hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero
-                        venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.
-                        Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum
-                        sodales, augue velit cursus nunc,</p>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <aside id="sidemenu">
-        <div class="container text-xs-center">
-            <h2>test the modal</h2>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#modal1">Show modal</button>
-        </div>
-    </aside>
-
-    <section id="contact" class="msection">
-        <div>
-
-        </div>
-    </section>
-
-
-    <!-- Modal -->
-    <div id="modal1" class="modal" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">Best Deal OFFER ever</div>
-                <div class="modal-body">Hello from body</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
-                </div>
+        <div class="row mt-4">
+            <div class="col-md-12 note">
+                <p>You can share your experience and information.</p>
+                <p>You can approve and disapprove the news, information from the other people.</p>
+                <p>You can ask questions to get answer.</p>
+                <p>You can make friends and Chat with them.</p>
+                <p>You can share any article through social media.</p>
+                <p>You can can rate any user.</p>
             </div>
         </div>
     </div>
-    @yield('content')
+</section>
 
-    <footer class="text-xs-center footerA">
+
+<section id="recent_info" class="msection container">
+        <div class="row">
+            <div class="col-md-12 text-xs-center">
+                <h1>Recent Info</h1>
+            </div>
+        </div>
+        <div class="row">
+            @foreach ($info as $info_element)
+                <div class="col-md-4 text-xs-center">
+                    <div class="card">
+                        <div class="card-block">
+                            <a class="card-title" href="/info/{{ $info_element->id }}">{{ $info_element->title }}</a>
+                        </div>
+                        <a class="card-title" href="/info/{{ $info_element->id }}"><img
+                                    src="{{ asset('storage/images/'.$info_element->cover) }}"
+                                    style="height:600;width:600;" class="img-fluid"/></a>
+                        <div class="card-block">
+                            <strong class="text-gray-dark">@ {{  $info_element->user->name }}</strong>
+                            <p class="card-text">{{  $info_element->body }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+</section>
+
+
+
+<footer class="text-xs-center footerA" style="background-color: black">
+    <div class="container">
         Copyright ITI
-    </footer>
-    @include('layouts.libraries')
-    </body>
+    </div>
+</footer>
+
+@include('layouts.libraries')
+<script>
+    $(document).ready(function () {
+        $('.nav-link').on('click', function (e) {
+            if (this.hash) {
+                e.preventDefault();
+                var hash = this.hash;
+                $('html, body').animate({scrollTop: $(hash).offset().top}, 1000, function () {
+                    window.location.hash = hash;
+                });
+            }
+        });
+    });
+</script>
+</body>
 </html>

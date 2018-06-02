@@ -22,8 +22,9 @@
                 </p>
 
                 <p>
-                    <span class="card-title font-weight-bold">Cover :-</span> {{$info->cover}}
-                    <img src='{{ asset('images/'.$info->cover) }}'>
+                    <span class="card-title font-weight-bold">Cover :-</span>
+                    <img src='{{ asset('storage/images/'.$info->cover) }}'>
+
 
 
                 </p>

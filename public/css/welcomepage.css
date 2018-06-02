@@ -34,6 +34,7 @@ body, html {
 
     background-image: url(http://www.dealerrefresh.com/wp-content/uploads/2012/06/bigstock-A-group-of-diverse-people-talk-16774229.jpg);
     background-size: cover;
+
 }
 
 #more {
@@ -42,11 +43,14 @@ body, html {
     background-size: cover;
 }
 
-.footerA {
-    height: 200px;
-    padding: 20px;
-    margin-top: 40px;
-}
+/*.footerA {*/
+    /*height: 200px;*/
+    /*padding: 20px;*/
+    /*margin-top: 40px;*/
+/*}*/
+
+
+
 #sidemenu{
     padding: 4em 0;
 }
@@ -57,6 +61,7 @@ body, html {
 
     .msection {
         min-height: 100%;
+        padding: 103px ;
     }
-
 }
+

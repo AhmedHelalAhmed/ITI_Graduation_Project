@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    $info=\App\Article::where("type_id","1")->get();
+    $info=\App\Article::where("type_id","1")->orderBy("created_at")->limit("6")->get();
     return view('welcome',['info' => $info,]);
 });
 
