@@ -24,7 +24,7 @@
                 @else
                     <li class="nav-item dropdown" style="position: relative; padding-left: 50px;">
 
-                    <img src="storage/images/avatars/{{ Auth::user()->avatar }}"
+                    <img src="/storage/images/avatars/{{ Auth::user()->avatar }}"
                          style="width: 32px;height: 32px; position: absolute; top: 6px; left:10px; border-radius: 50%"/>
 
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
