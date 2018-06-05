@@ -162,8 +162,9 @@ return [
         //package for like comment and reply
         risul\LaravelLikeComment\LikeCommentServiceProvider::class,
         //for image intervention
-        Intervention\Image\ImageServiceProvider::class
-
+        Intervention\Image\ImageServiceProvider::class,
+        //for social login
+        Acacha\LaravelSocial\Providers\LaravelSocialServiceProvider::class,
 
 
     ],
@@ -216,7 +217,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         //for image intervention
         'Image' => Intervention\Image\Facades\Image::class,
-
 
 
     ],

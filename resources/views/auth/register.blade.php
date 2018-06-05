@@ -68,6 +68,18 @@
                                 </button>
                             </div>
                         </div>
+                        <hr/>
+
+                        <div class="row">
+                            <label class="col-md-4 col-form-label text-md-right">Sign up With</label>
+
+                            <div class="col-md-6">
+                                <a href="/auth/twitter/">Twitter</a>
+                                <a href="/auth/linkedin/">LinkedIn</a>
+                            </div>
+                        </div>
+
+
                     </form>
                 </div>
             </div>

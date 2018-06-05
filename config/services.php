@@ -35,4 +35,20 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+
+    'google' => [
+        'client_id' => env('GOOGLE_OAUTH_APP_ID'),
+        'client_secret' => env('GOOGLE_OAUTH_APP_SECRET'),
+        'redirect' => env('GOOGLE_OAUTH_APP_REDIRECT_URL'),
+    ],
+    'twitter' => [
+        'client_id' => env('TWITTER_OAUTH_APP_ID'),
+        'client_secret' => env('TWITTER_OAUTH_APP_SECRET'),
+        'redirect' => env('TWITTER_OAUTH_APP_REDIRECT_URL'),
+    ],
+    'linkedin' => [
+        'client_id' => env('LINKEDIN_OAUTH_APP_ID'),
+        'client_secret' => env('LINKEDIN_OAUTH_APP_SECRET'),
+        'redirect' => env('LINKEDIN_OAUTH_APP_REDIRECT_URL'),
+    ],
 ];
