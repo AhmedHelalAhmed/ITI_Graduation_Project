@@ -25,3 +25,8 @@ Route::get('/info', 'InfoController@index')->name('info.index');
 Route::get('info/create', 'InfoController@create')->name('info.create');
 Route::post('info', 'InfoController@store')->name('info.store');
 Route::get('info/{id}', 'InfoController@show')->name('info.show');
+
+
+//profile
+Route::get('profile/', 'ProfileController@index')->name('profile.index');
+Route::put('profile/{id}', 'ProfileController@update')->name('profile.update');

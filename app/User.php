@@ -15,7 +15,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'avatar',
     ];
 
     /**
@@ -35,19 +38,18 @@ class User extends Authenticatable
 
     /**
      * Return the user attributes.
-
      * @return array
      */
     public static function getAuthor($id)
     {
         $user = self::find($id);
         return [
-            'id'     => $user->id,
-            'name'   => $user->name,
-            'email'  => $user->email,
-            'url'    => '',  // Optional
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'url' => '',  // Optional
             'avatar' => 'gravatar',  // Default avatar
-            'admin'  => $user->role === 'admin', // bool
+            'admin' => $user->role === 'admin', // bool
         ];
     }
 
