@@ -6,49 +6,8 @@
 </head>
 
 <body data-spy="scroll" data-target="#minimenu">
-<nav id="mainNav" class='navbar navbar-full navbar-dark bg-light navbar-fixed-top'>
-    <button class="navbar-toggler hidden-sm-up light float-xs-right" type="button" data-toggle="collapse"
-            data-target="#minimenu"></button>
-    <article id="minimenu" class="collapse navbar-toggleable-xs">
-        <ul class="nav navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#recent_info">Recent info</a></li>
-            <!-- Authentication Links -->
-            @guest
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                </li>
-            @else
-                <li class="nav-item dropdown">
+@include('layouts.nav')
 
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-
-                        {{ Auth::user()->name }} <span class="caret"></span>
-
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                              style="display: none;">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest
-        </ul>
-    </article>
-</nav>
 
 <header class="htop">
     <div class="container">
