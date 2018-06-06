@@ -15,20 +15,32 @@
 
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('/').'/info/'. $info_element->id }}"
                        target="_blank">
-                        Share on Facebook
+                        <img src="https://image.flaticon.com/icons/png/128/145/145802.png" alt="share in facebook" style="width: 50px;height: 50px;" />
                     </a>
                     <a href="https://twitter.com/intent/tweet?url={{ url('/').'/info/'. $info_element->id  }}"
                        target="_blank">
-                        Share on Twitter
+                        <img src="https://image.flaticon.com/icons/svg/145/145812.svg" alt="Share on Twitter" style="width: 50px;height: 50px;"/>
                     </a>
                     <a href="https://plus.google.com/share?url={{ url('/').'/info/'. $info_element->id  }}"
                        target="_blank">
-                        Share on Google
+                        <img src="https://image.flaticon.com/icons/svg/145/145804.svg" alt="Share on Google" style="width: 50px;height: 50px;"/>
+
                     </a>
+
+                    <div id="{{ $info_element->id }}" style="margin-top: 10px;">
+                        <button
+                           class="btn btn-xs btn-warning vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 1 ? 'You Vote up to this article' : 'Up' : 'Up'  }}</button>
+                        |
+                        <button
+                           class="btn btn-xs btn-danger vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 0 ? 'You vote Down to this article' : 'Down' : 'Down'  }}</button>
+                    </div>
 
                 </div>
             @endforeach
         </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
         <script>
 
             var popupMeta = {
@@ -53,4 +65,12 @@
                 }
             });
         </script>
+
+
+        <script>
+            var token = '{{ Session::token() }}';
+            var urlvote = '{{ route('vote') }}';
+        </script>
+        <script src="{{ asset('/js/vote.js') }}"></script>
+
 @endsection

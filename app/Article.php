@@ -32,4 +32,8 @@ class Article extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function vote(){
+        return $this->belongsTo(Vote::class);
+    }
 }

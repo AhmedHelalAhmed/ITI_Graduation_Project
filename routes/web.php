@@ -30,3 +30,7 @@ Route::get('info/{id}', 'InfoController@show')->name('info.show');
 //profile
 Route::get('profile/', 'ProfileController@index')->name('profile.index');
 Route::put('profile/{id}', 'ProfileController@update')->name('profile.update');
+
+
+//vote
+Route::post('/vote','InfoController@articleVoteArticle')->name('vote');

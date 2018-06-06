@@ -9,6 +9,10 @@ use App\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
+use App\Vote;
+
+
+
 class InfoController extends Controller
 {
     /**
@@ -41,12 +45,12 @@ class InfoController extends Controller
      * @return a new name for the file concatenated with time
      */
 
-    private  function _get_file_stored_name($file):string
+    private function _get_file_stored_name($file): string
     {
         $original_name = $file->getClientOriginalName();
         $original_name_without_extension = explode('.', $original_name)[0];
         $original_extension = explode('.', $original_name)[1];
-        $store_name = $original_name_without_extension . time() .'.'. $original_extension;
+        $store_name = $original_name_without_extension . time() . '.' . $original_extension;
         return $store_name;
     }
 
@@ -72,7 +76,7 @@ class InfoController extends Controller
 
         //for cover
         if ($request->hasFile('cover')) {
-            $cover_file=$request->file('cover');
+            $cover_file = $request->file('cover');
             $data['cover'] = $this->_get_file_stored_name($cover_file);
             Storage::putFileAs('public/images', $cover_file, $data['cover']);
         }
@@ -94,8 +98,6 @@ class InfoController extends Controller
     }
 
 
-
-
     /**
      * Display the specified resource.
      *
@@ -112,37 +114,37 @@ class InfoController extends Controller
         return view('info.show', ['info' => $info]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function articleVoteArticle(Request $request)
     {
-        //
-    }
+        $article_id = $request['articleId'];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $is_vote = $request['isvote'] === 'true';
+        $update = false;
+        $article = Article::find($article_id);
+        if (!$article) {
+            return null;
+        }
+        $user = Auth::user();
+        $vote = $user->votes()->where('article_id', $article_id)->first();
+        if ($vote) {
+            $already_voted = $vote->vote;
+            $update = true;
+            if ($already_voted == $is_vote) {
+                $vote->delete();
+                return null;
+            }
+        } else {
+            $vote = new Vote();
+        }
+        $vote->vote = $is_vote;
+        $vote->user_id = $user->id;
+        $vote->article_id = $article->id;
+        if ($update) {
+            $vote->update();
+        } else {
+            $vote->save();
+        }
+        return null;
     }
 }
