@@ -5,6 +5,7 @@ body, html {
 
 #mainNav {
     background-color: black;
+    font-weight: bolder;
 }
 
 .htop div, #about .container {
@@ -43,11 +44,11 @@ body, html {
     background-size: cover;
 }
 
-/*.footerA {*/
-    /*height: 200px;*/
-    /*padding: 20px;*/
-    /*margin-top: 40px;*/
-/*}*/
+.footerA {
+    height: 200px;
+    padding: 20px;
+    margin-top: 40px;
+}
 
 
 
@@ -56,12 +57,17 @@ body, html {
 }
 @media (min-width: 768px) {
     .htop {
-        min-height: 100%;
+        min-height: 40%;
     }
 
     .msection {
         min-height: 100%;
-        padding: 103px ;
+        /*padding: 103px ;*/
     }
+}
+
+
+p{
+    font-size: 1em;
 }
 

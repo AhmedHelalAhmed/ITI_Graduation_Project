@@ -5,17 +5,17 @@ if(!Auth::check())
 $GLOBALS['commentClass'] = -1;
 ?>
 <div class="laravelComment" id="laravelComment-{{ $comment_item_id }}">
-    <h3 class="ui dividing header">Comments</h3>
+    {{--<h3 class="ui dividing header"></h3>--}}
     <div class="ui threaded comments" id="{{ $comment_item_id }}-comment-0">
-        <button class="ui basic small submit button" id="write-comment" data-form="#{{ $comment_item_id }}-comment-form">Write comment</button>
+        <button class="ui basic small submit button" id="write-comment" data-form="#{{ $comment_item_id }}-comment-form">اكتب تعليق</button>
         <form class="ui laravelComment-form form" id="{{ $comment_item_id }}-comment-form" data-parent="0" data-item="{{ $comment_item_id }}" style="display: none;">
             <div class="field">
                 <textarea id="0-textarea" rows="2" {{ $GLOBALS['commentDisabled'] }}></textarea>
                 @if(!Auth::check())
-                    <small>Please Log in to comment</small>
+                    <small>من فضلك سجل الدخول حتى تستطيع التعليق</small>
                 @endif
             </div>
-            <input type="submit" class="ui basic small submit button" value="Comment" {{ $GLOBALS['commentDisabled'] }}>
+            <input type="submit" class="ui basic small submit button" value="اضف تعليق" {{ $GLOBALS['commentDisabled'] }}>
         </form>
 <?php
 $GLOBALS['commentVisit'] = array();
@@ -37,17 +37,17 @@ function dfs($comments, $comment){
                 {{ $comment->comment }}
             </div>
             <div class="actions">
-                <a class="{{ $GLOBALS['commentDisabled'] }} reply reply-button" data-toggle="{{ $comment->id }}-reply-form">Reply</a>
+                <a class="{{ $GLOBALS['commentDisabled'] }} reply reply-button" data-toggle="{{ $comment->id }}-reply-form">اضف ردا</a>
             </div>
 
             <form id="{{ $comment->id }}-reply-form" class="ui laravelComment-form form" data-parent="{{ $comment->id }}" data-item="{{ $comment->item_id }}" style="display: none;">
                 <div class="field">
                     <textarea id="{{ $comment->id }}-textarea" rows="2" {{ $GLOBALS['commentDisabled'] }}></textarea>
                     @if(!Auth::check())
-                        <small>Please Log in to comment</small>
+                        <small>من فضلك سجل الدخول حتى تستطيع التعليق</small>
                     @endif
                 </div>
-                <input type="submit" class="ui basic small submit button" value="Comment" {{ $GLOBALS['commentDisabled'] }}>
+                <input type="submit" class="ui basic small submit button" value="اضف تعليق" {{ $GLOBALS['commentDisabled'] }}>
             </form>
         </div>
         <div class="comments" id="{{ $comment->item_id }}-comment-{{ $comment->id }}">
@@ -69,5 +69,5 @@ foreach ($comments as $comment) {
 }
 ?>
     </div>
-    <button class="ui basic button" id="showComment" data-show-comment="0" data-item-id="{{ $comment_item_id }}">Show comments</button>
+    <button class="ui basic button" id="showComment" data-show-comment="0" data-item-id="{{ $comment_item_id }}">اظهر التعليقات</button>
 </div>

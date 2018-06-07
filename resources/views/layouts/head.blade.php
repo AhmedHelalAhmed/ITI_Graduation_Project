@@ -10,7 +10,7 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>{{ config('Active social', 'Active social') }}</title>
+<title>{{ config('اشاعات', 'اشاعات') }}</title>
 
 
 <!-- Style -->

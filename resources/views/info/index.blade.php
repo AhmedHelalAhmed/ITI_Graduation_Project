@@ -27,7 +27,6 @@
                        target="_blank">
                         <img src="https://image.flaticon.com/icons/svg/145/145804.svg" alt="Share on Google"
                              style="width: 50px;height: 50px;"/>
-
                     </a>
 
 
@@ -48,7 +47,7 @@
         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+<!-- share with social media -->
         <script>
 
             var popupMeta = {
@@ -74,7 +73,7 @@
             });
         </script>
 
-
+<!-- rate -->
         <script>
             var token = '{{ Session::token() }}';
             var urlvote = '{{ route('vote') }}';

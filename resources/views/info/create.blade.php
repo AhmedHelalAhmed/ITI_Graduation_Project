@@ -13,7 +13,7 @@
     @endif
 
 
-    <div class="container" style="margin-top: 70px;width: 50%;">
+    <div class="container" style="margin-top: 70px;width: 50%; text-align: right">
 
         <form action="{{ Route("info.store")  }}" method="post" enctype="multipart/form-data">
 
@@ -22,22 +22,22 @@
 
             {{--title--}}
             <div class="form-group">
-                <label for="exampleInputTitle">Title</label>
+                <label for="exampleInputTitle">العنوان</label>
                 <input type="text" class="form-control" id="exampleInputTitle" aria-describedby="titleHelp"
-                       placeholder="Enter title" name="title">
+                       placeholder="العنوان" name="title">
             </div>
 
             {{--body--}}
             <div class="form-group">
-                <label for="exampleFormControlbody">body</label>
+                <label for="exampleFormControlbody">المحتوى</label>
                 <textarea class="form-control" id="exampleFormControlbody" rows="3" name="body"
-                          placeholder="info body"></textarea>
+                          placeholder="المحتوى"></textarea>
             </div>
 
 
             {{--category--}}
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Category</label>
+                <label for="exampleFormControlSelect1">التصنيف</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="category_id">
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -47,21 +47,21 @@
 
             {{--cover--}}
             <div class="form-group">
-                <label for="exampleFormControlCover">Cover</label>
+                <label for="exampleFormControlCover">الغلاف</label>
                 <input type="file" class="form-control" id="exampleInputFile" aria-describedby="FileHelp" name="cover">
             </div>
 
 
             {{--attachment--}}
             <div class="form-group">
-                <label for="exampleFormControlattachment">Attachment</label>
+                <label for="exampleFormControlattachment">فيديو</label>
                 <input type="file" class="form-control" id="exampleInputAttachment" aria-describedby="AttachmentHelp"
                        name="attachment">
             </div>
 
 
             {{--submit button--}}
-            <button type="submit" class="btn btn-success">Add info</button>
+            <button type="submit" class="btn btn-success">اضف معلومة أو خبر</button>
 
 
         </form>
