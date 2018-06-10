@@ -26,11 +26,12 @@
                 @foreach ($info as $info_element)
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top"
+                            <img id='cover-image' class="card-img-top"
                                  data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
                                  alt="cover" style="height: 225px; width: 100%; display: block;"
-                                 src="{{ asset('storage/images/'.$info_element->cover) }}" data-holder-rendered="true"
-                                 data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                                 src="{{ asset('storage/images/'.$info_element->cover) }}"
+                                 data-holder-rendered="true"
+                                 data-toggle="tooltip" data-placement="top" title="{{ $info_element->title }}">
                             <div class="card-body">
 
                                 <p class="card-text">{{   substr($info_element->body, 0, 100) }} . . . </p>
@@ -46,10 +47,6 @@
                                         <button type="button"
                                                 class="btn btn-sm btn-outline-danger vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 0 ? 'You Down this article' : 'Down' : 'Down'  }}</button>
                                     </div>
-
-                                    {{--<div class="social_media">--}}
-
-                                    {{--</div>--}}
 
 
                                 </div>
@@ -67,13 +64,10 @@
                 @endforeach
             </div>
 
-
             <!-- Start Pagination -->
-            <div class="container">
-                <nav aria-label="Page navigation">
+                <div aria-label="Page navigation" class="rumors-pagination">
                     {{ $info->links('pagination.default') }}
-                </nav>
-            </div>
+                </div>
             <!-- End Pagination -->
 
 
