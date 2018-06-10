@@ -22,14 +22,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //info
 Route::get('/info', 'InfoController@index')->name('info.index');
-Route::get('info/create', 'InfoController@create')->name('info.create');
+Route::get('info/create', 'InfoController@create')->name('info.create')->middleware('auth');;
 Route::post('info', 'InfoController@store')->name('info.store');
 Route::get('info/{id}', 'InfoController@show')->name('info.show');
 
 
 //profile
 Route::get('profile/', 'ProfileController@index')->name('profile.index');
-Route::put('profile/{id}', 'ProfileController@update')->name('profile.update');
+Route::put('profile/{id}', 'ProfileController@update')->name('profile.update')->middleware('auth');;
 
 
 //vote

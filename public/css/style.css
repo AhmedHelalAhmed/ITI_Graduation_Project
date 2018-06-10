@@ -1,0 +1,72 @@
+
+/*
+contain main style for every
+page in the website
+except the main page
+ */
+
+
+/* Start Global */
+/* in file global.css */
+/* End Global */
+
+
+
+
+
+/* Start Articles */
+
+.publishes {
+    width: 70%;
+    float: left;
+}
+
+.publishes article {
+    background-color: #F6F6F6;
+    border: 1px solid #CCC;
+    margin: 20px;
+}
+
+.publishes article header {
+    background-color: #E2E2E2;
+    padding: 10px;
+}
+
+.publishes article section {
+    padding: 10px;
+}
+
+
+/* End Articles */
+
+
+
+/* Start Sidebar */
+
+aside {
+    float: right;
+    width: 30%;
+}
+
+aside section {
+    background-color: #EEE;
+    margin: 20px 10px;
+    padding: 10px;
+    border: 1px solid #CCC;
+    margin-bottom: 20px;
+}
+
+aside section h3 {
+    background-color: #D1D1D1;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+aside section ul li {
+    line-height: 1.8
+}
+
+aside section video{
+width: 100%;
+}
+/* End Sidebar */

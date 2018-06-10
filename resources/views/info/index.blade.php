@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="text-align: right">
-        <h1>All info</h1>
+    <div class="container" style="text-align: right;padding: 70px">
+        <h1>جميع المعلومات والاخبار</h1>
         <a class="btn btn-success" href="/info/create">اضف معلومة او خبر</a>
         <div class="my-3 p-3 bg-white rounded box-shadow">
             <h6 class="border-bottom border-gray pb-2 mb-0">المعلومات و الاخبار</h6>

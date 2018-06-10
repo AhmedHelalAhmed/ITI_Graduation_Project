@@ -15,8 +15,9 @@ box-shadow: 0px 0px 65px 10px rgba(255,0,0,0.64); text-align: right">
 
             <h2 class="mt-0" style="text-align: center;position: relative;top: 30px">{{  $info->title }}</h2>
             <hr style="border:  3px black solid ;width: 50%;position: relative;top: 20px;"/>
-            <div class="container text-center" style="border: 2px solid green; padding: 10%;border-style: dotted ">
+            <div class="container text-center" style="border: 2px solid green; padding: 10%;border-style: dotted;font-size: medium ">
 <img src="{{ asset('storage/images/'.$info->cover) }}" />
+                <br/>
                 {{$info->body}}
 
             </div>

@@ -1,0 +1,101 @@
+/*
+contain global format for any page
+what ever it is
+main or secondary
+ */
+
+/* Start Global */
+* {
+    margin: 0;
+    padding: 0;
+    /* for floating */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /* for floating */
+}
+
+body {
+    font-family: Arial, Tahoma;
+}
+
+ul {
+    list-style: none;
+}
+
+/* for clear floating */
+.clearfix {
+    clear: both;
+}
+
+/* for clear floating */
+
+/*Start support older browsers*/
+
+header,
+section,
+footer,
+aside,
+nav,
+main,
+article,
+figure {
+    display: block;
+}
+
+/*End support older browsers*/
+
+/* End Global */
+
+/* Start header */
+
+
+
+.main {
+    margin-bottom: 103px;
+}
+
+nav {
+    background-color: #DDD;
+}
+
+nav ul {
+
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+}
+
+nav ul li img {
+
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+}
+
+/* End header */
+
+/* Start Main */
+
+main {
+    padding: 20px;
+}
+
+main p {
+    text-align: center;
+}
+
+/* End Main */
+
+/* Start Footer */
+
+footer {
+    background-color: #333;
+    color: #DDD;
+    text-align: center;
+    padding: 10px;
+}
+
+/* End Footer */

@@ -53,11 +53,11 @@
 
 
             {{--attachment--}}
-            <div class="form-group">
-                <label for="exampleFormControlattachment">فيديو</label>
-                <input type="file" class="form-control"  style="direction: rtl;" id="exampleInputAttachment" aria-describedby="AttachmentHelp"
-                       name="attachment">
-            </div>
+            {{--<div class="form-group">--}}
+                {{--<label for="exampleFormControlattachment">فيديو</label>--}}
+                {{--<input type="file" class="form-control"  style="direction: rtl;" id="exampleInputAttachment" aria-describedby="AttachmentHelp"--}}
+                       {{--name="attachment">--}}
+            {{--</div>--}}
 
 
             {{--submit button--}}
