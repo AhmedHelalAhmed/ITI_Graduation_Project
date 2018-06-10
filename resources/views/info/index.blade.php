@@ -34,11 +34,10 @@
                             <div class="card-body">
 
                                 <p class="card-text">{{   substr($info_element->body, 0, 100) }} . . . </p>
-                                <a href="/info/{{ $info_element->id }}">اقرا المزيد</a>
+                                <a href="/info/{{ $info_element->id }}">Read more</a>
 
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group" id="{{ $info_element->id }}">
-
 
                                         <button type="button"
                                                 class="btn btn-sm btn-outline-secondary vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 1 ? 'You Vote up to this article' : 'Up' : 'Up'  }}
@@ -53,8 +52,17 @@
 
                                     {{--</div>--}}
 
-                                    <small class="text-muted">9 mins</small>
+
+
                                 </div>
+
+                                <small class="text-muted">
+                                    <time datatime="{{  $info_element->created_at }}">
+                                        {{ Carbon\Carbon::parse($info_element->created_a)->toDayDateTimeString() }}
+
+
+                                    </time>
+                                </small>
                             </div>
                         </div>
 
