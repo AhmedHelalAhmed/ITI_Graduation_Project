@@ -23,6 +23,7 @@ class InfoController extends Controller
     public function index()
     {
         $info = Article::with("user")->orderBy('created_at' ,'DESC')->paginate(3);
+
         return view('info.index', ['info' => $info]);
 
     }
