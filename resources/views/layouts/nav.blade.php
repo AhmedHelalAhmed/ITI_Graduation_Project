@@ -7,6 +7,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
@@ -18,37 +19,38 @@
             </li>
 
             <li class="nav-item">
-                {{--<a class="nav-link" href="{{ route('questions.index') }}">Questions</a>--}}
+                <a class="nav-link" href="#">Questions</a>
             </li>
             <li class="nav-item">
-                {{--<a class="nav-link" href="{{ route('trands.index') }}">Trands</a>--}}
+                <a class="nav-link" href="#">Trands</a>
             </li>
 
         </ul>
 
-
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
-
-
         <ul class="navbar-nav">
+
+
+            <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
+                </form>
+            </li>
+
+
             @guest
                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
             @else
 
                 <li class="nav-item dropdown">
-
-
-
-
-
-
-                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/storage/images/avatars/{{ Auth::user()->avatar }}"/>
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <img class="avatar" src="{{ asset('storage/images/avatars/'.Auth::user()->avatar ) }}"
+                             alt="avatar image"/>
                     </a>
+
+
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item disabled" href="#">{{ Auth::user()->name }}</a>
                         <div class="dropdown-divider"></div>
@@ -58,8 +60,7 @@
                         <a class="dropdown-item" href="#">My categories</a>
 
 
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a class="dropdown-item" href="#">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -71,15 +72,14 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-
-                        @endguest
-
                     </div>
-
 
                 </li>
 
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">add Rumor</button>
+                <input class="btn btn-outline-success my-2 my-sm-0" value="add Rumor" type="submit"/>
+            @endguest
+
+
         </ul>
 
 

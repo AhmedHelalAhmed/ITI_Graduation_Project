@@ -22,7 +22,7 @@ class InfoController extends Controller
      */
     public function index()
     {
-        $info = Article::with("user")->get();
+        $info = Article::with("user")->orderBy('created_at' ,'DESC')->paginate(3);
         return view('info.index', ['info' => $info]);
 
     }
@@ -114,7 +114,12 @@ class InfoController extends Controller
         return view('info.show', ['info' => $info]);
     }
 
-
+    /**
+     * Rate the article
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
     public function articleVoteArticle(Request $request)
     {
         $article_id = $request['articleId'];

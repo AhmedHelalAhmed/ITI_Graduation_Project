@@ -1,0 +1,41 @@
+/* Start Rumors */
+
+.Rumors {
+    width: 68%;
+    float: left;
+}
+
+.Rumors section {
+    background-color: #F6F6F6;
+    border: 1px solid #CCC;
+    margin: 20px;
+    padding: 10px;
+}
+
+.Rumors section h3 {
+    background-color: #E2E2E2;
+    padding: 10px;
+}
+
+.Rumors section a {
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.Rumors .container .card {
+    border: 2px #4e555b solid;
+
+}
+
+.Rumors .container .card img {
+    border: 1.5px #383d41 dashed;
+    padding: 3px;
+}
+
+.Rumors .container .card div button {
+    margin: 3px;
+}
+
+/* End Rumors */
+
+

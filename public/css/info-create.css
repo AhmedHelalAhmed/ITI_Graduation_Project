@@ -1,0 +1,21 @@
+
+/* Start Rumor_form */
+
+.Rumor_form {
+    width: 70%;
+    float: left;
+}
+
+.Rumor_form section {
+    background-color: #F6F6F6;
+    border: 1px solid #CCC;
+    margin: 20px;
+    padding: 10px;
+}
+
+.Rumor_form section h3 {
+    background-color: #E2E2E2;
+    padding: 10px;
+}
+
+/* End Rumor_form */

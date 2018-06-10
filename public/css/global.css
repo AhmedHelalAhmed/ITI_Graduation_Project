@@ -68,7 +68,7 @@ nav ul li {
     display: inline-block;
 }
 
-nav ul li img {
+nav .avatar {
 
     width: 32px;
     height: 32px;

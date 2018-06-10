@@ -1,7 +1,20 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title')
+    <title>Add Rumor</title>
+@endsection
 
+@section('style')
+    <!-- Start style -->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- End Style -->
+
+    <!-- Start info-create -->
+    <link href="{{ asset('css/info-create.css') }}" rel="stylesheet">
+    <!-- End info-create -->
+@endsection
+
+@section('content')
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -13,62 +26,63 @@
     @endif
 
 
-    <div class="container" style="margin-top: 70px;width: 50%; text-align: right">
+    <div class="Rumor_form">
+            <section>
+                <h3>Add new Rumor</h3>
 
-        <form action="{{ Route("info.store")  }}" method="post" enctype="multipart/form-data">
+                <form action="{{ Route("info.store")  }}" method="post" enctype="multipart/form-data">
 
-            {{--for security--}}
-            {{csrf_field()}}
+                    <!--Start Security-->
+                {{csrf_field()}}
+                <!--End Security-->
 
-            {{--title--}}
-            <div class="form-group">
-                <label for="exampleInputTitle">العنوان</label>
-                <input type="text" class="form-control" id="exampleInputTitle" aria-describedby="titleHelp"
-                       placeholder="العنوان" style="direction: rtl;"  name="title">
-            </div>
+                    <!--Start Title-->
+                    <div class="form-group">
+                        <label for="form-title">Title</label>
+                        <input type="text" class="form-control" id="form-title" aria-describedby="form-title"
+                               placeholder="Title" name="title">
+                    </div>
+                    <!--End Title-->
 
-            {{--body--}}
-            <div class="form-group">
-                <label for="exampleFormControlbody">المحتوى</label>
-                <textarea class="form-control" id="exampleFormControlbody" style="direction: rtl;" rows="3" name="body"
-                          placeholder="المحتوى"></textarea>
-            </div>
+                    <!--Start Body-->
+                    <div class="form-group">
+                        <label for="form-body">Body</label>
+                        <textarea class="form-control" id="form-body" rows="3" name="body"
+                                  placeholder="Body"></textarea>
+                    </div>
+                    <!--End Body-->
 
+                    <!-- Start Category-->
+                    <div class="form-group">
+                        <label for="form-category">Category</label>
+                        <select class="form-control" id="form-category" name="category_id" >
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <!-- End Category-->
 
-            {{--category--}}
-            <div class="form-group">
-                <label for="exampleFormControlSelect1">التصنيف</label>
-                <select class="form-control" style="direction: rtl;"  id="exampleFormControlSelect1" name="category_id">
-                    @foreach ($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                    @endforeach
-                </select>
-            </div>
+                    <!--Start Cover-->
+                    <div class="form-group">
+                        <label for="form-cover">Cover</label>
+                        <input type="file" class="form-control" id="form-cover" aria-describedby="form-cover"
+                               name="cover">
+                    </div>
+                    <!--End Cover-->
 
-            {{--cover--}}
-            <div class="form-group">
-                <label for="exampleFormControlCover">الغلاف</label>
-                <input type="file" class="form-control"  style="direction: rtl;"  id="exampleInputFile" aria-describedby="FileHelp" name="cover">
-            </div>
-
-
-            {{--attachment--}}
-            {{--<div class="form-group">--}}
-                {{--<label for="exampleFormControlattachment">فيديو</label>--}}
-                {{--<input type="file" class="form-control"  style="direction: rtl;" id="exampleInputAttachment" aria-describedby="AttachmentHelp"--}}
-                       {{--name="attachment">--}}
-            {{--</div>--}}
-
-
-            {{--submit button--}}
-            <button type="submit" class="btn btn-success">اضف معلومة أو خبر</button>
-
-
-        </form>
+                    <!--Start Submit Button-->
+                    <button type="submit" class="btn btn-success">Add Rumor</button>
+                    <!--End Submit Button-->
 
 
+                </form>
+            </section>
     </div>
 
+@endsection
 
 
+@section('sidebar')
+    @include('layouts.sidebar')
 @endsection
