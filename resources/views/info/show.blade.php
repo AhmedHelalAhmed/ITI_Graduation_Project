@@ -20,6 +20,17 @@
     <!-- Start Font Awesome -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!-- End Font Awesome -->
+
+
+    <!-- Start Comment -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/icon.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/comment.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/form.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/components/button.min.css" rel="stylesheet">
+    <link href="{{ asset('/vendor/laravelLikeComment/css/style.css') }}" rel="stylesheet">
+    <!-- End Comment -->
+
+
 @endsection
 
 
@@ -28,7 +39,7 @@
 
 
 @section('content')
-    <div class="publishes">
+    <div class="publishes container">
         <article>
             <header>
                 <!-- Start Title -->
@@ -144,5 +155,10 @@
     </script>
     <script src="{{ asset('/js/vote.js') }}"></script>
     <!-- End Rate -->
+
+    <!-- Start Comment -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
+    <!-- End Comment -->
 
 @endsection
