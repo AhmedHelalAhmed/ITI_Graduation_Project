@@ -36,20 +36,19 @@
 
                                 <p class="card-text">{{   substr($info_element->body, 0, 100) }} . . . </p>
                                 <a href="/info/{{ $info_element->id }}">Read more</a>
+                                <!-- Start Rate -->
+                                @auth
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group" id="{{ $info_element->id }}">
+                                            <button type="button"
+                                                    class="btn btn-sm btn-outline-warning vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 1 ? 'You up this article' : 'Up' : 'Up'  }}</button>
 
-                                <div class="d-flex justify-content-between align-items-center">
-
-                                    <div class="btn-group" id="{{ $info_element->id }}">
-
-                                        <button type="button"
-                                                class="btn btn-sm btn-outline-warning vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 1 ? 'You up this article' : 'Up' : 'Up'  }}</button>
-
-                                        <button type="button"
-                                                class="btn btn-sm btn-outline-danger vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 0 ? 'You Down this article' : 'Down' : 'Down'  }}</button>
+                                            <button type="button"
+                                                    class="btn btn-sm btn-outline-danger vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 0 ? 'You Down this article' : 'Down' : 'Down'  }}</button>
+                                        </div>
                                     </div>
-
-
-                                </div>
+                            @endauth
+                            <!-- end Rate -->
 
                                 <small class="text-muted">
                                     <time datatime="{{  $info_element->created_at }}">
@@ -65,9 +64,9 @@
             </div>
 
             <!-- Start Pagination -->
-                <div aria-label="Page navigation" class="rumors-pagination">
-                    {{ $info->links('pagination.default') }}
-                </div>
+            <div aria-label="Page navigation" class="rumors-pagination">
+                {{ $info->links('pagination.default') }}
+            </div>
             <!-- End Pagination -->
 
 
