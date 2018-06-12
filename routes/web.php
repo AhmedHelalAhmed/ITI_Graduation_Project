@@ -34,3 +34,9 @@ Route::put('profile/{id}', 'ProfileController@update')->name('profile.update')->
 
 //vote
 Route::post('/vote','InfoController@articleVoteArticle')->name('vote');
+
+
+//tags
+//Route::get('tags/create', 'TagsController@create')->name('tags.create')->middleware('auth');
+//Route::get('tags/', 'TagsController@index')->name('tags.index')->middleware('auth');
+Route::resource('tags','TagsController',['except'=>['create']])->middleware('auth');
