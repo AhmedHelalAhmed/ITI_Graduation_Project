@@ -15,6 +15,10 @@
 @yield('title')
 <!-- End Title -->
 
+    <!-- Start Normalize.css -->
+    <link href="{{ asset('css/normalize.css') }}" rel="stylesheet">
+    <!-- End Normalize.css -->
+
     <!-- Start global style -->
     <link href="{{ asset('css/global.css') }}" rel="stylesheet">
     <!-- End Global Style -->

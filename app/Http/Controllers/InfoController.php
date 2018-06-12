@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-
+use App\Tag;
 use App\Vote;
 
 
@@ -36,7 +36,8 @@ class InfoController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('info.create', ['categories' => $categories,]);
+        $tags = Tag::all();
+        return view('info.create', ['categories' => $categories,'tags'=>$tags]);
     }
 
     /**
@@ -63,6 +64,7 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
+
         //set the data
         $data = $request->all();
 
@@ -92,8 +94,9 @@ class InfoController extends Controller
 
 
         //store the data
-        Article::create($data);
+        $article=Article::create($data);
 
+        $article->tags()->sync($request->tags,false);
 
         return redirect(route('info.index'));
     }

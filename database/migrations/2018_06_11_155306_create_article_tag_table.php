@@ -17,7 +17,6 @@ class CreateArticleTagTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('article_id');
             $table->unsignedInteger('tag_id');
-            $table->timestamps();
         });
     }
 

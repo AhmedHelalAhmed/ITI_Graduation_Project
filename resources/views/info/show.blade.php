@@ -31,6 +31,8 @@
     <!-- End Comment -->
 
 
+
+
 @endsection
 
 
@@ -75,10 +77,18 @@
 
 
                 <!-- Start Article Content -->
-                <span>
+                <span class="article-body">
                     {{$info->body}}
                 </span>
                 <!-- Start Article Content -->
+                <hr>
+                <!-- Start Tags -->
+                <span class="tags">
+                    @foreach($info->tags as $tag)
+                        <a href="#" class="btn-secondary rounded mr-2 p-2">{{ '#'.$tag->name }}</a>
+                        @endforeach
+                </span>
+                <!-- Start Tags -->
             </section>
 
             <hr>
