@@ -27,9 +27,9 @@ Route::post('info', 'InfoController@store')->name('info.store');
 Route::get('info/{id}', 'InfoController@show')->name('info.show');
 
 
-//profile
+//profile - for every user to update it's profile
 Route::get('profile/', 'ProfileController@index')->name('profile.index');
-Route::put('profile/{id}', 'ProfileController@update')->name('profile.update')->middleware('auth');;
+Route::put('profile/{id}', 'ProfileController@update')->name('profile.update')->middleware('auth');
 
 
 //vote
@@ -43,3 +43,7 @@ Route::resource('tags','TagsController',['except'=>['create']])->middleware('aut
 
 //admin
 Route::get('admin','AdminController@index')->name('admin.index')->middleware('auth');
+
+
+//users - for make to each user profile which can be access by another user
+Route::get('users/{id}','UsersController@show')->name('users.show');
