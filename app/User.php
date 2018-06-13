@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Hootlex\Friendships\Traits\Friendable;
 
 
 class User extends Authenticatable
@@ -58,4 +59,6 @@ class User extends Authenticatable
         return $this->hasMany(Vote::class);
     }
 
+
+    use Friendable;
 }
