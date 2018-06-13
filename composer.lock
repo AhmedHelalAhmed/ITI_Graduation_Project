@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f11cda666b05c4bda4f1d336087eced1",
+    "content-hash": "ee28ad544922a2e11ce73f9dcb21e4b5",
     "packages": [
         {
             "name": "acacha/filesystem",
@@ -830,6 +830,34 @@
                 "trusted proxy"
             ],
             "time": "2018-02-07T20:20:57+00:00"
+        },
+        {
+            "name": "gridprinciples/friendly",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gridprinciples/friendly.git",
+                "reference": "e5321eed165402c5adf04394bc1c9b57c3c40e67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gridprinciples/friendly/zipball/e5321eed165402c5adf04394bc1c9b57c3c40e67",
+                "reference": "e5321eed165402c5adf04394bc1c9b57c3c40e67",
+                "shasum": ""
+            },
+            "require-dev": {
+                "laravel/laravel": "^5.1",
+                "phpunit/phpunit": "4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GridPrinciples\\Friendly\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Friends system for users, on Laravel.",
+            "time": "2015-08-25T13:44:54+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
