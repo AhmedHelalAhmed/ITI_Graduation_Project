@@ -165,8 +165,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         //for social login
         Acacha\LaravelSocial\Providers\LaravelSocialServiceProvider::class,
-        //for friendship
-        GridPrinciples\Friendly\Providers\FriendlyServiceProvider::class,
+
 
     ],
 
