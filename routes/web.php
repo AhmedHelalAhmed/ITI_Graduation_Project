@@ -37,6 +37,9 @@ Route::post('/vote','InfoController@articleVoteArticle')->name('vote');
 
 
 //tags
-//Route::get('tags/create', 'TagsController@create')->name('tags.create')->middleware('auth');
-//Route::get('tags/', 'TagsController@index')->name('tags.index')->middleware('auth');
 Route::resource('tags','TagsController',['except'=>['create']])->middleware('auth');
+
+
+
+//admin
+Route::get('admin','AdminController@index')->name('admin.index')->middleware('auth');
