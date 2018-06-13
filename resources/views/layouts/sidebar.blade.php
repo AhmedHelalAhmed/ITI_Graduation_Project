@@ -15,10 +15,10 @@
     <section class="links">
         <h3>Danger of rumer</h3>
 
-        <video controls width="290" height="200" loop poster=" {{ asset('/storage/media/rumers.jpg') }} ">
-            <source src="{{ asset('/storage/media/rumers.mp4') }}">
-            <source src="{{ asset('/storage/media/rumers.ogg') }}" type="video/ogg">
-            <source src="{{ asset('/storage/media/rumers.webm') }}" type="video/webm">
+        <video controls width="290" height="200" loop poster=" {{ asset('/media/rumers.jpg') }} ">
+            <source src="{{ asset('/media/rumers.mp4') }}">
+            <source src="{{ asset('/media/rumers.ogg') }}" type="video/ogg">
+            <source src="{{ asset('/media/rumers.webm') }}" type="video/webm">
             Your Browser Does Not Support Video Technology
         </video>
 

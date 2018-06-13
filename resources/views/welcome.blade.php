@@ -22,7 +22,7 @@
             <div class="carousel-inner">
                 <!-- Start Slide 1 -->
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('storage/media/images/1.png') }}" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('media/images/1.png') }}" alt="First slide">
 
                     <div class="carousel-caption d-none d-md-block">
                         <h1>Share</h1>
@@ -34,7 +34,7 @@
 
                 <!-- Start Slide 2 -->
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('storage/media/images/2.png')}}" alt="Second slide">
+                    <img class="d-block w-100" src="{{ asset('media/images/2.png')}}" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h1>Make</h1>
                         <p>friends and follow what the people write</p>
@@ -46,7 +46,7 @@
 
                 <!-- Start slide 3 -->
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('storage/media/images/7.png')}}" alt="Third slide">
+                    <img class="d-block w-100" src="{{ asset('media/images/7.png')}}" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h1>read</h1>
                         <p>read the rumors and tell people about it to prevent the rumors </p>
