@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Tag;
 use App\Article;
 
 class QuestionsController extends InfoController
@@ -17,24 +15,13 @@ class QuestionsController extends InfoController
     public function index()
     {
         $questions = Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 2)->paginate(3);
-        $tags = Tag::all();
-        $categories = Category::all();
-
-        return view('questions.index',
-            ['questions' => $questions,
-                'tags' => $tags,
-                'categories' => $categories]);
+        return view('questions.index', ['questions' => $questions]);
     }
 
 
     public function create()
     {
-        $categories = Category::all();
-        $tags = Tag::all();
-
-        return view('questions.create',
-            ['categories' => $categories,
-                'tags' => $tags]);
+        return view('questions.create');
     }
 
 
@@ -42,15 +29,12 @@ class QuestionsController extends InfoController
     {
         try {
             $question = Article::findOrFail($id);
-            $categories = Category::all();
-            $tags = Tag::all();
+
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
         return view('questions.edit',
-            ['question' => $question,
-                'categories' => $categories,
-                'tags' => $tags]);
+            ['question' => $question]);
     }
 
 
@@ -78,11 +62,8 @@ class QuestionsController extends InfoController
         $article = Article::create($data);
 
         $article->tags()->sync($request->tags, false);
-        $categories = Category::all();
-        $tags = Tag::all();
-        return redirect(route('questions.index'),
-            ['tags' => $tags,
-                'categories' => $categories]);
+
+        return redirect(route('questions.index'));
     }
 
 
@@ -94,12 +75,8 @@ class QuestionsController extends InfoController
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
-        $tags = Tag::all();
-        $categories = Category::all();
         return view('questions.show',
-            ['question' => $question,
-                'tags' => $tags,
-                'categories' => $categories,]);
+            ['question' => $question]);
     }
 
 
@@ -127,11 +104,7 @@ class QuestionsController extends InfoController
             return Response::view('errors.404');
         }
         Session::flash('success', 'Successfully saved');
-        $tags = Tag::all();
-        $categories = Category::all();
-        return redirect(route('questions.index'), [
-            'tags' => $tags,
-            'categories' => $categories,]);
+        return redirect(route('questions.index'));
     }
 
 }

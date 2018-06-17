@@ -13,7 +13,7 @@ use App\Tag;
 use App\Vote;
 
 
-class InfoController extends Controller
+class InfoController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -23,12 +23,8 @@ class InfoController extends Controller
     public function index()
     {
         $info = Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 1)->paginate(3);
-        $tags = Tag::all();
-        $categories = Category::all();
-        return view('info.index',
-            ['info' => $info,
-            'tags' => $tags,
-                'categories' => $categories,]);
+
+        return view('info.index', ['info' => $info,]);
 
     }
 
@@ -39,13 +35,7 @@ class InfoController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $tags = Tag::all();
-        $categories = Category::all();
-        return view('info.create',
-            ['categories' => $categories,
-            'tags' => $tags,
-                'categories' => $categories,]);
+        return view('info.create');
     }
 
     /**
@@ -96,9 +86,7 @@ class InfoController extends Controller
         $article->tags()->sync($request->tags, false);
         $tags = Tag::all();
         $categories = Category::all();
-        return redirect(route('info.index',
-            ['tags' => $tags,
-                'categories' => $categories,]));
+        return redirect(route('info.index'));
     }
 
 
@@ -115,12 +103,8 @@ class InfoController extends Controller
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
-        $tags = Tag::all();
-        $categories = Category::all();
-        return view('info.show',
-            ['info' => $info,
-                'tags' => $tags,
-                'categories' => $categories,]);
+
+        return view('info.show', ['info' => $info]);
     }
 
     /**
@@ -166,15 +150,11 @@ class InfoController extends Controller
     {
         try {
             $info = Article::findOrFail($id);
-            $categories = Category::all();
-            $tags = Tag::all();
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
         return view('info.edit',
-            ['info' => $info,
-                'categories' => $categories,
-                'tags' => $tags]);
+            ['info' => $info]);
     }
 
     public function update($id, Request $request)
@@ -203,11 +183,7 @@ class InfoController extends Controller
         }
 
         Session::flash('success', 'Successfully saved');
-        $tags = Tag::all();
-        $categories = Category::all();
-        return redirect(route('info.index',
-            ['tags' => $tags,
-                'categories' => $categories,]));
+        return redirect(route('info.index'));
     }
 
 
@@ -215,10 +191,7 @@ class InfoController extends Controller
     {
         Article::destroy($id);
         Session::flash('success', 'Successfully deleted');
-        $tags = Tag::all();
-        $categories = Category::all();
-        return back(['tags' => $tags,
-            'categories' => $categories,]);
+        return back();
     }
 
 }

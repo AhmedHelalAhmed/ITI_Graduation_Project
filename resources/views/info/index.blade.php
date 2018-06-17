@@ -21,7 +21,7 @@
     <div class="Rumors">
         <section class="container">
             <h3>Rumors</h3>
-            <a class="btn btn-success" href="/info/create">Add Rumbor</a>
+            <a class="btn btn-success" href="/info/create">Add Rumor</a>
             @if (isset($info))
             <div class="row">
                     @foreach ($info as $info_element)
