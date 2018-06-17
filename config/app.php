@@ -167,6 +167,8 @@ return [
         Acacha\LaravelSocial\Providers\LaravelSocialServiceProvider::class,
         //for friendship
         Hootlex\Friendships\FriendshipsServiceProvider::class,
+        //for DataTables
+        Yajra\DataTables\DataTablesServiceProvider::class,
 
     ],
 
@@ -218,6 +220,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         //for image intervention
         'Image' => Intervention\Image\Facades\Image::class,
+        //for DataTables
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+
 
 
     ],
