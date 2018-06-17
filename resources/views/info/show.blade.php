@@ -2,7 +2,9 @@
 
 
 @section('title')
+    @if(isset($info))
     <title>{{ $info->title }}</title>
+    @endif
 @endsection
 
 
@@ -42,6 +44,7 @@
 
 @section('content')
     <div class="publishes container">
+        @if(isset($info))
         <article>
             <header>
                 <!-- Start Title -->
@@ -61,7 +64,7 @@
                 <!-- Start Date/Time -->
                 <p>Published on
                     <time datatime="{{  $info->created_at }}">
-                        {{ Carbon\Carbon::parse($info->created_a)->toDayDateTimeString() }}
+                        {{ Carbon\Carbon::parse($info->created_at)->toDayDateTimeString() }}
                     </time>
                 </p>
                 <!-- End Date/Time -->
@@ -140,6 +143,7 @@
             <!-- End Comments  -->
             </section>
         </article>
+        @endif
     </div>
 @endsection
 

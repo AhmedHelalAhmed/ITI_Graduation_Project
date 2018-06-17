@@ -49,8 +49,6 @@ figure {
 
 /* Start header */
 
-
-
 .main {
     margin-bottom: 103px;
 }
@@ -99,3 +97,9 @@ footer {
 }
 
 /* End Footer */
+
+/* Start header */
+header h1 {
+    word-wrap: break-word;
+}
+/* End header */

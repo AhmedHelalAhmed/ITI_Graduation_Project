@@ -1,22 +1,9 @@
-@extends('layouts.app')
+@extends('info.create')
 
 @section('title')
-    <title>Add Rumor</title>
+    <title>Add Question</title>
 @endsection
 
-@section('style')
-    <!-- Start style -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- End Style -->
-
-    <!-- Start info-create -->
-    <link href="{{ asset('css/info-create.css') }}" rel="stylesheet">
-    <!-- End info-create -->
-
-    <!-- Start select 2 for tags -->
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
-    <!-- Start select 2 for tags -->
-@endsection
 
 @section('content')
     @if ($errors->any())
@@ -32,9 +19,9 @@
 
     <div class="Rumor_form">
         <section>
-            <h3>Add new Rumor</h3>
+            <h3>Add new Question</h3>
 
-            <form action="{{ Route("info.store")  }}" method="post" enctype="multipart/form-data">
+            <form action="{{ Route("questions.store")  }}" method="post" enctype="multipart/form-data">
 
                 <!--Start Security-->
             {{csrf_field()}}
@@ -89,9 +76,8 @@
                 <!--End Cover-->
 
                 <!--Start Submit Button-->
-                <button type="submit" class="btn btn-success">Add Rumor</button>
+                <button type="submit" class="btn btn-primary">Add Question</button>
                 <!--End Submit Button-->
-
 
             </form>
         </section>
@@ -100,15 +86,3 @@
 @endsection
 
 
-@section('sidebar')
-    @include('layouts.sidebar')
-@endsection
-
-
-@section('include_files_body')
-    <!-- Start select 2 for tags -->
-    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/select2-tags.js') }}"></script>
-    <!-- Start select 2 for tags -->
-@endsection

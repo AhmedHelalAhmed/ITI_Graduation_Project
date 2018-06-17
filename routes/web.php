@@ -16,15 +16,22 @@ Route::get('/', function () {
     return view('welcome',['info' => $info,]);
 });
 
+//login and register
 Auth::routes();
+
+//home page
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 //info
 Route::get('/info', 'InfoController@index')->name('info.index');
-Route::get('info/create', 'InfoController@create')->name('info.create')->middleware('auth');;
+Route::get('info/create', 'InfoController@create')->name('info.create')->middleware('auth');
 Route::post('info', 'InfoController@store')->name('info.store');
 Route::get('info/{id}', 'InfoController@show')->name('info.show');
+Route::get('/info/{id}/edit', 'InfoController@edit')->name('info.edit')->middleware('auth');
+Route::put('/info/{id}', 'InfoController@update')->name('info.update')->middleware('auth');
+Route::delete('/info/{id}', 'InfoController@destroy')->name('info.destroy')->middleware('auth');
+
 
 
 //profile - for every user to update it's profile
@@ -47,3 +54,7 @@ Route::get('admin','AdminController@index')->name('admin.index')->middleware('au
 
 //users - for make to each user profile which can be access by another user
 Route::get('users/{id}','UsersController@show')->name('users.show');
+
+
+//questions
+Route::resource('questions','QuestionsController')->middleware('auth');

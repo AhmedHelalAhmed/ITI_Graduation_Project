@@ -6,11 +6,11 @@ use App\Article;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Tag;
 use App\Vote;
-
 
 
 class InfoController extends Controller
@@ -22,7 +22,7 @@ class InfoController extends Controller
      */
     public function index()
     {
-        $info = Article::with("user")->orderBy('created_at' ,'DESC')->paginate(3);
+        $info = Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 1)->paginate(3);
 
         return view('info.index', ['info' => $info]);
 
@@ -37,7 +37,7 @@ class InfoController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('info.create', ['categories' => $categories,'tags'=>$tags]);
+        return view('info.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -47,7 +47,7 @@ class InfoController extends Controller
      * @return a new name for the file concatenated with time
      */
 
-    private function _get_file_stored_name($file): string
+    protected function _get_file_stored_name($file): string
     {
         $original_name = $file->getClientOriginalName();
         $original_name_without_extension = explode('.', $original_name)[0];
@@ -64,7 +64,6 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
-
         //set the data
         $data = $request->all();
 
@@ -83,20 +82,10 @@ class InfoController extends Controller
             $data['cover'] = $this->_get_file_stored_name($cover_file);
             Storage::putFileAs('public/images', $cover_file, $data['cover']);
         }
-
-
-        //for attachment
-        if ($request->hasFile('attachment')) {
-            $attachment_file = $request->file('attachment');
-            $data['attachment'] = $this->_get_file_stored_name($attachment_file);
-            Storage::putFileAs('public/attachments', $attachment_file, $data['attachment']);
-        }
-
-
         //store the data
-        $article=Article::create($data);
+        $article = Article::create($data);
 
-        $article->tags()->sync($request->tags,false);
+        $article->tags()->sync($request->tags, false);
 
         return redirect(route('info.index'));
     }
@@ -127,7 +116,6 @@ class InfoController extends Controller
     public function articleVoteArticle(Request $request)
     {
         $article_id = $request['articleId'];
-
         $is_vote = $request['isvote'] === 'true';
         $update = false;
         $article = Article::find($article_id);
@@ -156,4 +144,55 @@ class InfoController extends Controller
         }
         return null;
     }
+
+
+    public function edit($id)
+    {
+        try {
+            $info = Article::findOrFail($id);
+            $categories = Category::all();
+            $tags = Tag::all();
+        } catch (ModelNotFoundException $e) {
+            return Response::view('errors.404');
+        }
+        return view('info.edit', ['info' => $info, 'categories' => $categories, 'tags' => $tags]);
+    }
+
+    public function update($id, Request $request)
+    {
+        try {
+            $info = Article::findOrFail($id);
+            $data = $request->all();
+
+            //for cover
+            if ($request->hasFile('cover')) {
+                $cover_file = $request->file('cover');
+                $data['cover'] = $this->_get_file_stored_name($cover_file);
+                Storage::putFileAs('public/images', $cover_file, $data['cover']);
+            }
+
+            $info->update($data);
+            if (isset($request->tags)) {
+                $info->tags()->sync($request->tags);
+            } else {
+                $info->tags()->sync(array());
+
+            }
+
+        } catch (ModelNotFoundException $e) {
+            return Response::view('errors.404');
+        }
+
+        Session::flash('success', 'Successfully saved');
+        return redirect(route('info.index'));
+    }
+
+
+    public function destroy($id)
+    {
+        Article::destroy($id);
+        Session::flash('success', 'Successfully deleted');
+        return back();
+    }
+
 }
