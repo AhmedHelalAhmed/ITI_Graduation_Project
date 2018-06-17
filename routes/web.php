@@ -58,3 +58,7 @@ Route::get('users/{id}','UsersController@show')->name('users.show');
 
 //questions
 Route::resource('questions','QuestionsController')->middleware('auth');
+
+
+//categories
+Route::resource('categories','CategoriesController')->middleware('auth');
