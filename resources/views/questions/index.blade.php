@@ -7,9 +7,9 @@
 @section('content')
     <div class="Rumors">
         <section class="container">
-            <h3>Rumors</h3>
+            <h3>Questions</h3>
 
-            <a class="btn btn-success" href="/questions/create">Add Rumbor</a>
+            <a class="btn btn-success" href="/questions/create">Add question</a>
 
             <div class="row">
                 @foreach ($questions as $question)
