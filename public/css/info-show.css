@@ -2,9 +2,9 @@
 .publishes {
     width: 66%;
     margin: 20px;
-    -webkit-box-shadow: 0px 0px 65px 10px rgba(255, 0, 0, 0.64);
-    -moz-box-shadow: 0px 0px 65px 10px rgba(255, 0, 0, 0.64);
-    box-shadow: 0px 0px 65px 10px rgba(255, 0, 0, 0.64);
+    -webkit-box-shadow: 0px 0px 65px 10px rgba(228, 178, 255, 0.64);
+    -moz-box-shadow: 0px 0px 65px 10px rgba(228, 178, 255, 0.64);
+    box-shadow: 0px 0px 65px 10px rgba(228, 178, 255, 0.64);
 }
 
 .publishes article section img .cover {
@@ -15,21 +15,27 @@
 /* End Article */
 
 /* Start Social Media */
+
 .share {
     float: left;
-    padding: 10px 15px;
+    padding: 10px;
     border: none;
     background-color: #ececec;
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 14px;
     color: #FFF;
     z-index: 1;
     transition: transform .1s ease-in;
+    width: 40px;
+    height: 40px;
+    border-radius: 60%;
+    margin: 5px;
 }
 
 .share i{
     font-size: 18px;
     padding-right: 5px;
+    color: white;
 }
 
 .facebook {
@@ -49,8 +55,11 @@
 }
 
 .share:hover {
+
     transform: scale(1.3);
     z-index: 2;
+    text-decoration: none !important;
+    color: white;
 }
 /* End Social Media */
 
