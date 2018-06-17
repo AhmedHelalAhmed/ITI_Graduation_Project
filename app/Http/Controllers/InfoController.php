@@ -23,8 +23,12 @@ class InfoController extends Controller
     public function index()
     {
         $info = Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 1)->paginate(3);
-
-        return view('info.index', ['info' => $info]);
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('info.index',
+            ['info' => $info,
+            'tags' => $tags,
+                'categories' => $categories,]);
 
     }
 
@@ -37,7 +41,11 @@ class InfoController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('info.create', ['categories' => $categories, 'tags' => $tags]);
+        $categories = Category::all();
+        return view('info.create',
+            ['categories' => $categories,
+            'tags' => $tags,
+                'categories' => $categories,]);
     }
 
     /**
@@ -86,8 +94,11 @@ class InfoController extends Controller
         $article = Article::create($data);
 
         $article->tags()->sync($request->tags, false);
-
-        return redirect(route('info.index'));
+        $tags = Tag::all();
+        $categories = Category::all();
+        return redirect(route('info.index',
+            ['tags' => $tags,
+                'categories' => $categories,]));
     }
 
 
@@ -104,7 +115,12 @@ class InfoController extends Controller
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
-        return view('info.show', ['info' => $info]);
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('info.show',
+            ['info' => $info,
+                'tags' => $tags,
+                'categories' => $categories,]);
     }
 
     /**
@@ -155,7 +171,10 @@ class InfoController extends Controller
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
-        return view('info.edit', ['info' => $info, 'categories' => $categories, 'tags' => $tags]);
+        return view('info.edit',
+            ['info' => $info,
+                'categories' => $categories,
+                'tags' => $tags]);
     }
 
     public function update($id, Request $request)
@@ -184,7 +203,11 @@ class InfoController extends Controller
         }
 
         Session::flash('success', 'Successfully saved');
-        return redirect(route('info.index'));
+        $tags = Tag::all();
+        $categories = Category::all();
+        return redirect(route('info.index',
+            ['tags' => $tags,
+                'categories' => $categories,]));
     }
 
 
@@ -192,7 +215,10 @@ class InfoController extends Controller
     {
         Article::destroy($id);
         Session::flash('success', 'Successfully deleted');
-        return back();
+        $tags = Tag::all();
+        $categories = Category::all();
+        return back(['tags' => $tags,
+            'categories' => $categories,]);
     }
 
 }

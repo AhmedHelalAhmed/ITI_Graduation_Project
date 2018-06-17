@@ -2,19 +2,7 @@
 <aside>
 
     <section class="links">
-        <h3>Categories</h3>
-        <ul>
-            <li>sport</li>
-            <li>social</li>
-            <li>arts</li>
-            <li>science</li>
-        </ul>
-    </section>
-
-
-    <section class="links">
-        <h3>Danger of rumer</h3>
-
+        <h3>Report about rumors</h3>
         <video controls width="290" height="200" loop poster=" {{ asset('/media/rumers.jpg') }} ">
             <source src="{{ asset('/media/rumers.mp4') }}">
             <source src="{{ asset('/media/rumers.ogg') }}" type="video/ogg">
@@ -24,14 +12,23 @@
 
     </section>
 
+    <section class="links">
+
+        <h3>Categories</h3>
+        <ul>
+            @foreach($categories as $category)
+                <li><a href="#">{{ $category->name }}</a></li>
+            @endforeach
+        </ul>
+    </section>
+
 
     <section class="tags">
-        <h3>top tags today</h3>
+        <h3>Tags</h3>
         <ul>
-            <li>tag1</li>
-            <li>tag2</li>
-            <li>tag3</li>
-            <li>tag4</li>
+            @foreach($tags as $tag)
+                <li><a href="#">{{ '#'.$tag->name }}</a></li>
+            @endforeach
         </ul>
     </section>
 

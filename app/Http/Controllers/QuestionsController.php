@@ -17,7 +17,13 @@ class QuestionsController extends InfoController
     public function index()
     {
         $questions = Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 2)->paginate(3);
-        return view('questions.index', ['questions' => $questions]);
+        $tags = Tag::all();
+        $categories = Category::all();
+
+        return view('questions.index',
+            ['questions' => $questions,
+                'tags' => $tags,
+                'categories' => $categories]);
     }
 
 
@@ -25,7 +31,10 @@ class QuestionsController extends InfoController
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('questions.create', ['categories' => $categories, 'tags' => $tags]);
+
+        return view('questions.create',
+            ['categories' => $categories,
+                'tags' => $tags]);
     }
 
 
@@ -38,7 +47,10 @@ class QuestionsController extends InfoController
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
-        return view('questions.edit', ['question' => $question, 'categories' => $categories, 'tags' => $tags]);
+        return view('questions.edit',
+            ['question' => $question,
+                'categories' => $categories,
+                'tags' => $tags]);
     }
 
 
@@ -66,8 +78,11 @@ class QuestionsController extends InfoController
         $article = Article::create($data);
 
         $article->tags()->sync($request->tags, false);
-
-        return redirect(route('questions.index'));
+        $categories = Category::all();
+        $tags = Tag::all();
+        return redirect(route('questions.index'),
+            ['tags' => $tags,
+                'categories' => $categories]);
     }
 
 
@@ -75,10 +90,16 @@ class QuestionsController extends InfoController
     {
         try {
             $question = Article::findOrFail($id);
+
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
-        return view('questions.show', ['question' => $question]);
+        $tags = Tag::all();
+        $categories = Category::all();
+        return view('questions.show',
+            ['question' => $question,
+                'tags' => $tags,
+                'categories' => $categories,]);
     }
 
 
@@ -106,7 +127,11 @@ class QuestionsController extends InfoController
             return Response::view('errors.404');
         }
         Session::flash('success', 'Successfully saved');
-        return redirect(route('questions.index'));
+        $tags = Tag::all();
+        $categories = Category::all();
+        return redirect(route('questions.index'), [
+            'tags' => $tags,
+            'categories' => $categories,]);
     }
 
 }

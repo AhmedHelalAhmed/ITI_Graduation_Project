@@ -103,3 +103,13 @@ header h1 {
     word-wrap: break-word;
 }
 /* End header */
+
+
+
+/* Start sidebar */
+
+aside section ul li {
+    display: inline-block;
+    word-wrap: break-word;
+}
+/* End sidebar */
