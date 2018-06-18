@@ -1,79 +1,116 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title')
-    <title>All Tags</title>
+    <title>Admin | Tags</title>
 @endsection
 
 
-@section('style')
-    <!-- Start style -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- End Style -->
 
-    <!-- Start info-index -->
-    <link href="{{ asset('css/tags-index.css') }}" rel="stylesheet">
-    <!-- End info-index -->
 
+@section('include_files_head')
+
+    <!-- Start Jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- End Jquery -->
+
+    <!-- Start Delete by ajax -->
+    <script type="text/javascript" charset="utf-8">
+        $(document).on('click', '.btn-danger', function () {
+            let self = this;
+            let id = $(this).attr('target');
+            let conf = confirm("Are you sure ?");
+            if (conf)
+                $.ajax({
+                    url: `/tags/${id}`,
+                    type: 'POST',
+                    data: {
+                        '_token': '{{csrf_token()}}',
+                        '_method': 'DELETE'
+                    },
+                    success: res => {
+                            $(self).parents('tr').remove();
+                    }
+                });
+        });
+    </script>
+    <!-- End Delete by ajax -->
+
+    <!-- Start DataTable -->
+    <script>
+        $(function () {
+            $('#tags-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{Route('tagsdatatables.index')}}',
+                columns: [
+                    {data: 'name', name: 'name', searchable: true,},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ],
+            });
+        });
+    </script>
+    <!-- End DataTable -->
+
+
+
+    <!-- Start Edit by jQuery -->
+    <script type="text/javascript" charset="utf-8">
+        $(document).on('click', '#edit-tag', function () {
+            let self = this;
+            let id = $(this).attr('target');
+            $.ajax({
+                url: `/tags/${id}/edit`,
+                type: 'GET',
+                data: {
+                    '_token': '{{csrf_token()}}',
+                    '_method': 'edit'
+                },
+                success: res => {
+                    $("#tag-div").html(res);
+                }
+            });
+
+        });
+    </script>
+    <!-- End Edit by jQuery -->
 
 @endsection
 
 
 
 @section('content')
-
-    <div class="tags">
-        <!-- start flash notification -->
-        @if(Session::has('success'))
-            <div class="alert alert-success" role="alert">
-                <strong>Successful:</strong>
-                {{ Session::get('success') }}
-            </div>
-        @endif
-        @if(count($errors) > 0)
-            <div class="alert alert-danger" role="alert">
-                <strong>Errors:</strong>
-                <ul>
-                    @foreach($errors as $error)
-                        <li>  {{ $error }} </li>
-                    @endforeach
-                </ul>
-            </div>
-    @endif
-    <!-- end flash notification -->
-        <section class="container">
-            <h2>Tags</h2>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($tags as $tag)
+    <!-- Main content -->
+    <section class="content">
+        <!-- Info boxes -->
+        <div class="row">
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <div id="tag-div">
+                    <form action="{{ Route("tags.store")  }}" method="post">
+                        <!--Start Security-->
+                    {{csrf_field()}}
+                    <!--End Security-->
+                        <div class="input-group" id="tag-form">
+                            <input type="text" class="form-control" placeholder="Enter tag name" name="name">
+                            <span class="input-group-btn">
+                              <button class="btn btn-default" type="submit">Add Tag</button>
+                             </span>
+                        </div>
+                    </form>
+                </div>
+                <table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%"
+                       id="tags-table">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ $tag->id }}</th>
-                        <td>{{ $tag->name }}</td>
+                        <th>Tag Name</th>
+                        <th>actions</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <div class="container">
-                <h2>New Tag</h2>
-                <form action="{{ route('tags.store') }}" method="POST">
-                    {{ csrf_field() }}
-                    <label for="name">Name :</label>
-                    <input type="text" id="name" name="name" class="form-control"/>
-                    <button class="btn btn-primary btn-block btn-h1-spacing">Create New Tag</button>
-                </form>
+                    </thead>
+                </table>
             </div>
-        </section>
-    </div>
-
-
+            <!-- /.col -->
+        </div>
+    </section>
+    <!-- /.content -->
 
 
 
@@ -86,8 +123,3 @@
 @endsection
 
 
-@section('include_files_body')
-    <!-- Start Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- End Jquery -->
-@endsection

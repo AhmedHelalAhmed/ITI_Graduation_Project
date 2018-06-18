@@ -6,14 +6,7 @@
     <title>Admin | Categories</title>
 @endsection
 
-@section('style')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap.min.css"/>
-    <style>
-        .btn {
-            margin: 0 5px;
-        }
-    </style>
-@endsection
+
 
 
 
@@ -38,9 +31,7 @@
                         '_method': 'DELETE'
                     },
                     success: res => {
-                        if (res.sucess = "sucess") {
-                            $(self).parents('tr').remove();
-                        }
+                        $(self).parents('tr').remove();
                     }
                 });
         });
@@ -78,9 +69,7 @@
                     '_method': 'edit'
                 },
                 success: res => {
-                    if (res.sucess = "sucess") {
                         $("#category-div").html(res);
-                    }
                 }
             });
 
@@ -126,10 +115,3 @@
     <!-- /.content -->
 
 @endsection
-
-
-@section('include_files_body')
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-@endsection
-

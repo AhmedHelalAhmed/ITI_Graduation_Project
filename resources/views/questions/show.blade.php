@@ -53,7 +53,7 @@
                 <span class="tags">
                     @foreach($question->tags as $tag)
                         <a href="#" class="btn-secondary rounded mr-2 p-2">{{ '#'.$tag->name }}</a>
-                        @endforeach
+                    @endforeach
                 </span>
                 <!-- Start Tags -->
             </section>

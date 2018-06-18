@@ -39,6 +39,16 @@
     <!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <!-- Start dataTable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap.min.css"/>
+    <style>
+        .btn {
+            margin: 0 5px;
+        }
+    </style>
+    <!-- End dataTable -->
+
     <!-- Start Style -->
 @yield('style')
 <!-- End Style -->
@@ -122,9 +132,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
                         <li><a href="{{ route('categories.index') }}"><i class="fa fa-circle-o"></i> Categories</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Tags</a></li>
+                        <li><a href="{{ route('tags.index') }}"><i class="fa fa-circle-o"></i> Tags</a></li>
                     </ul>
                 </li>
                 <!-- add forms -->
@@ -404,6 +413,13 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('bower_components/admin-lte/dist/js/demo.js') }}
         "></script>
+
+<!-- Start dataTable -->
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+<!-- End dataTable -->
+
+
 
 <!-- Start include in body -->
 @yield('include_files_body')
