@@ -420,7 +420,6 @@
 <!-- End dataTable -->
 
 
-
 <!-- Start include in body -->
 @yield('include_files_body')
 <!-- end include in body -->
