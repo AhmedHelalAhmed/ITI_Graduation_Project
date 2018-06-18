@@ -17,7 +17,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tags</span>
-                        <span class="info-box-number">90<small>%</small></span>
+                        <span class="info-box-number">{{ $tags->count() }} <small>tags</small></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -30,7 +30,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Articles</span>
-                        <span class="info-box-number">41,410</span>
+                        <span class="info-box-number">{{ $articles->count() }} <small>article</small></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -47,7 +47,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Categories</span>
-                        <span class="info-box-number">760</span>
+                        <span class="info-box-number">{{ $categories->count() }} <small>categories</small></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -60,7 +60,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Members</span>
-                        <span class="info-box-number">2,000</span>
+                        <span class="info-box-number">{{ $users->count() }} <small>members</small></span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
