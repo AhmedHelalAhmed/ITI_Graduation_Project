@@ -15,8 +15,7 @@
 
             <div class="round-button" id="mybutton">
 
-                <a class="round-button round-button-circle" href="/questions/create">Write</a>
-
+                <a class="round-button round-button-circle" href="/questions/create">+</a>
             </div>
 
 

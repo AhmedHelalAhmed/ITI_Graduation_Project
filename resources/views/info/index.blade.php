@@ -39,7 +39,7 @@
             text-align: center;
             color: #e2eaf3;
 
-            font-size: 1.2em;
+            font-size: 3em;
             font-weight: bold;
             text-decoration: none;
         }
@@ -64,7 +64,7 @@
             <h3>Rumors</h3>
             <div class="round-button" id="mybutton">
 
-                <a class="round-button round-button-circle" href="/info/create">Write</a>
+                <a class="round-button round-button-circle" href="/info/create">+</a>
 
             </div>
 

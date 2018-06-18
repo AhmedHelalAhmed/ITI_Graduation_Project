@@ -72,7 +72,7 @@
 
                 </li>
 
-                {{--<input class="btn btn-outline-success my-2 my-sm-0" value="add Rumor" type="submit"/>--}}
+                <input class="btn btn-outline-success my-2 my-sm-0" value="Write" type="submit"/>
             @endguest
 
 
