@@ -13,6 +13,47 @@
     <!-- Start info-index -->
     <link href="{{ asset('css/info-index.css') }}" rel="stylesheet">
     <!-- End info-index -->
+
+
+    <style>
+        /* Start add Rumor */
+        .round-button {
+            width: 40%;
+        }
+        .round-button-circle {
+            width: 40%;
+            border-radius: 50%;
+            border: 10px solid #cfdcec;
+            overflow: hidden;
+            background: #4679BD;
+            box-shadow: 0 0 3px gray;
+        }
+
+        .round-button-circle:hover {
+            background: #30588e;
+        }
+
+        .round-button a {
+            display: block;
+            float: left;
+            text-align: center;
+            color: #e2eaf3;
+
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        #mybutton {
+            position: fixed;
+            bottom: -2px;
+            left: 90%;
+            width: 20%;
+            height: 20%;
+            z-index: 1;
+            word-wrap: break-word;
+        }
+        /* End add Rumor */
+    </style>
 @endsection
 
 
@@ -21,9 +62,15 @@
     <div class="Rumors">
         <section class="container">
             <h3>Rumors</h3>
-            <a class="btn btn-success" href="/info/create">Add Rumor</a>
+            <div class="round-button" id="mybutton">
+
+                <a class="round-button round-button-circle" href="/info/create">Write</a>
+
+            </div>
+
+
             @if (isset($info))
-            <div class="row">
+                <div class="row">
                     @foreach ($info as $info_element)
                         <div class="col-md-4">
                             <div class="card mb-4 box-shadow">
@@ -64,13 +111,13 @@
                     @endforeach
 
 
-            </div>
+                </div>
 
-            <!-- Start Pagination -->
-            <div aria-label="Page navigation" class="rumors-pagination">
-                {{ $info->links('pagination.default') }}
-            </div>
-            <!-- End Pagination -->
+                <!-- Start Pagination -->
+                <div aria-label="Page navigation" class="rumors-pagination">
+                    {{ $info->links('pagination.default') }}
+                </div>
+                <!-- End Pagination -->
             @endif
 
         </section>

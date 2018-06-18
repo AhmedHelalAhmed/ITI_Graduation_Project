@@ -4,12 +4,21 @@
     <title>Questions</title>
 @endsection
 
+
+
+
 @section('content')
     <div class="Rumors">
         <section class="container">
             <h3>Questions</h3>
 
-            <a class="btn btn-success" href="/questions/create">Add question</a>
+
+            <div class="round-button" id="mybutton">
+
+                <a class="round-button round-button-circle" href="/questions/create">Write</a>
+
+            </div>
+
 
             <div class="row">
                 @foreach ($questions as $question)
