@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    $info=\App\Article::where("type_id","1")->orderBy("created_at")->limit("6")->get();
-    return view('welcome',['info' => $info,]);
+    $info = \App\Article::where("type_id", "1")->orderBy("created_at")->limit("6")->get();
+    return view('welcome', ['info' => $info,]);
 });
 
 //login and register
@@ -33,32 +33,34 @@ Route::put('/info/{id}', 'InfoController@update')->name('info.update')->middlewa
 Route::delete('/info/{id}', 'InfoController@destroy')->name('info.destroy')->middleware('auth');
 
 
-
 //profile - for every user to update it's profile
 Route::get('profile/', 'ProfileController@index')->name('profile.index');
 Route::put('profile/{id}', 'ProfileController@update')->name('profile.update')->middleware('auth');
 
 
 //vote
-Route::post('/vote','InfoController@articleVoteArticle')->name('vote');
+Route::post('/vote', 'InfoController@articleVoteArticle')->name('vote');
 
 
 //tags
-Route::resource('tags','TagsController',['except'=>['create']])->middleware('auth');
-
+Route::resource('tags', 'TagsController', ['except' => ['create']])->middleware('auth');
 
 
 //admin
-Route::get('admin','AdminController@index')->name('admin.index')->middleware('auth');
+Route::get('admin', 'AdminController@index')->name('admin.index')->middleware('auth');
 
 
 //users - for make to each user profile which can be access by another user
-Route::get('users/{id}','UsersController@show')->name('users.show');
+Route::get('users/{id}', 'UsersController@show')->name('users.show');
 
 
 //questions
-Route::resource('questions','QuestionsController')->middleware('auth');
+Route::resource('questions', 'QuestionsController')->middleware('auth');
 
 
 //categories
-Route::resource('categories','CategoriesController')->middleware('auth');
+Route::resource('categories', 'CategoriesController',['except' => ['show']])->middleware('auth');
+
+//categories datatable
+Route::get('categoriesdatatables', 'CategoriesDataTablesController@index')
+    ->name('categoriesdatatables.index');

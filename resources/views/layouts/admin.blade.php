@@ -123,25 +123,11 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="#"><i class="fa fa-circle-o"></i> Users</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Categories</a></li>
+                        <li><a href="{{ route('categories.index') }}"><i class="fa fa-circle-o"></i> Categories</a></li>
                         <li><a href="#"><i class="fa fa-circle-o"></i> Tags</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-edit"></i> <span> Add</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Category</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Tag</a>
-                        </li>
-
-
-                    </ul>
-                </li>
+                <!-- add forms -->
 
                 <li><a href="https://github.com/AhmedHelalAhmed/My-project" target="_blank"><i class="fa fa-book"></i>
                         <span>Documentation</span></a></li>
@@ -166,7 +152,6 @@
                 <li class="active">Dashboard</li>
             </ol>
         </section>
-
 
 
         <!-- Start Common Content-->
@@ -408,7 +393,7 @@
         "></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 {{--<script src="{{ asset('bower_components/admin-lte/dist/js/pages/dashboard2.js') }}--}}
-        {{--"></script>--}}
+{{--"></script>--}}
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('bower_components/admin-lte/dist/js/demo.js') }}
