@@ -11,11 +11,6 @@
 
 
 @section('include_files_head')
-
-    <!-- Start Jquery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!-- End Jquery -->
-
     <!-- Start Delete by ajax -->
     <script type="text/javascript" charset="utf-8">
         $(document).on('click', '.btn-danger', function () {
