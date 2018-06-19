@@ -100,15 +100,24 @@ class InfoController extends BaseController
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
+
+
         try {
             $info = Article::findOrFail($id);
+
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
 
-        return view('info.show', ['info' => $info]);
+        if ($request->ajax()) {
+
+            return view('info.showajax',
+                ['info' => $info]);
+        }
+        return view('info.show',
+            ['info' => $info]);
     }
 
     /**

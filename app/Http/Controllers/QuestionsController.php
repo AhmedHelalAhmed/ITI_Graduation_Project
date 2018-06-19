@@ -67,7 +67,7 @@ class QuestionsController extends InfoController
     }
 
 
-    public function show($id)
+    public function show($id, Request $request)
     {
         try {
             $question = Article::findOrFail($id);
@@ -75,6 +75,15 @@ class QuestionsController extends InfoController
         } catch (ModelNotFoundException $e) {
             return Response::view('errors.404');
         }
+
+
+        if ($request->ajax()) {
+
+            return view('info.showajax',
+                ['question' => $question]);
+        }
+
+
         return view('questions.show',
             ['question' => $question]);
     }

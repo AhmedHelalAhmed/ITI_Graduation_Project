@@ -1,18 +1,9 @@
-@extends('layouts.app')
 
-    @section('title')
-        @if(isset($info))
-        <title>{{ $info->title }}</title>
-        @endif
-    @endsection
 
-@section('style')
-    <!-- Start Style -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <!-- End Style -->
+
 
     <!-- Start info-index -->
-    <link href="{{ asset('css/info-show.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/info-show-ajax.css') }}" rel="stylesheet">
     <!-- End info-index -->
 
 
@@ -32,24 +23,16 @@
 
 
 
-@endsection
 
 
 
-
-
-
-@section('content')
     @include('info.showcontent')
-@endsection
 
 
-@section('sidebar')
-    @include('layouts.sidebar')
-@endsection
 
 
-@section('include_files_body')
+
+
     <!-- Start Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- End Jquery -->
@@ -71,4 +54,5 @@
     <script src="{{ asset('/vendor/laravelLikeComment/js/script.js') }}" type="text/javascript"></script>
     <!-- End Comment -->
 
-@endsection
+
+
