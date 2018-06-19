@@ -8,6 +8,6 @@
 
 
 @section('content')
-    @include('info.showcontent')
+    @include('questions.showcontent')
 @endsection
 

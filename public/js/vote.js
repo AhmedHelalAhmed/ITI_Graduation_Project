@@ -13,11 +13,11 @@ $(function () {
             data: {isvote: isvote, articleId: articleId, _token: token}
         })
             .done(function () {
-                event.target.innerText = isvote ? event.target.innerText == 'Up' ? 'You up this article' : 'Up' : event.target.innerText == 'Down' ? 'You down this article' : 'Down';
+                event.target.innerText = isvote ? event.target.innerText == `+1` ? `-` : '+1' : event.target.innerText == '-1' ? `+` : '-1';
                 if (isvote) {
-                    event.target.nextElementSibling.innerText = 'Down';
+                    event.target.nextElementSibling.innerText = '-1';
                 } else {
-                    event.target.previousElementSibling.innerText = 'Up';
+                    event.target.previousElementSibling.innerText = '+1';
                 }
             });
     });

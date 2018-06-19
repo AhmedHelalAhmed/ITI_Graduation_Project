@@ -20,6 +20,7 @@
         .round-button {
             width: 40%;
         }
+
         .round-button-circle {
             width: 40%;
             border-radius: 50%;
@@ -43,16 +44,20 @@
             font-weight: bold;
             text-decoration: none;
         }
+
         #mybutton {
             position: fixed;
-            bottom: -2px;
-            left: 90%;
+            bottom: 8px;
+            left: 91.5%;
             width: 20%;
             height: 20%;
             z-index: 1;
             word-wrap: break-word;
         }
+
         /* End add Rumor */
+
+
     </style>
 @endsection
 
@@ -63,12 +68,8 @@
         <section class="container">
             <h3>Rumors</h3>
             <div class="round-button" id="mybutton">
-
                 <a class="round-button round-button-circle" href="/info/create">+</a>
-
             </div>
-
-
             @if (isset($info))
                 <div class="row">
                     @foreach ($info as $info_element)
@@ -87,15 +88,22 @@
                                     <!-- Start Rate -->
                                     @auth
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group" id="{{ $info_element->id }}">
-                                                <button type="button"
-                                                        class="btn btn-sm btn-outline-warning vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 1 ? 'You up this article' : 'Up' : 'Up'  }}</button>
+                                            <div id="{{ $info_element->id }}">
 
-                                                <button type="button"
-                                                        class="btn btn-sm btn-outline-danger vote">{{ Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 0 ? 'You Down this article' : 'Down' : 'Down'  }}</button>
+                                                <button type="button" class="btn btn-sm btn-outline-success vote">
+                                                    {{  Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 1 ? '-' : '+1' : '+1' }}
+                                                </button>
+
+
+                                                <button type="button" class="btn btn-sm btn-outline-danger vote">
+                                                    {{  Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 0 ? '+' : '-1' : '-1'  }}
+                                                </button>
+
                                             </div>
                                         </div>
                                 @endauth
+
+
                                 <!-- end Rate -->
 
                                     <small class="text-muted">

@@ -54,13 +54,13 @@
             <!-- Start Rate  -->
             @auth
             <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group" id="{{ $info->id }}">
+                <div id="{{ $info->id }}">
                     <button type="button"
-                            class="btn btn-sm btn-outline-warning vote">{{ Auth::user()->votes()->where('article_id', $info->id)->first() ? Auth::user()->votes()->where('article_id', $info->id)->first()->vote == 1 ? 'You up this article' : 'Up' : 'Up'  }}</button>
+                            class="btn btn-sm btn-outline-success vote">{{ Auth::user()->votes()->where('article_id', $info->id)->first() ? Auth::user()->votes()->where('article_id', $info->id)->first()->vote == 1 ? '-' : '+1' : '+1'  }}</button>
 
 
                     <button type="button"
-                            class="btn btn-sm btn-outline-danger vote">{{ Auth::user()->votes()->where('article_id', $info->id)->first() ? Auth::user()->votes()->where('article_id', $info->id)->first()->vote == 0 ? 'You Down this article' : 'Down' : 'Down'  }}</button>
+                            class="btn btn-sm btn-outline-danger vote">{{ Auth::user()->votes()->where('article_id', $info->id)->first() ? Auth::user()->votes()->where('article_id', $info->id)->first()->vote == 0 ? '+' : '-1' : '-1'  }}</button>
                 </div>
             </div>
             @endauth
