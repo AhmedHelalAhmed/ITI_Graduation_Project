@@ -60,7 +60,7 @@
                                    target="{{ $article->type_id }}">
 
 
-                                        <button class="btn btn-success">Read More</button>
+                                        <button class="btn btn-success" id="{{ $article->id }}">Read More</button>
 
                                 </a>
                             </div>
