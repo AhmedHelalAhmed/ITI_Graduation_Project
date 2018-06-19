@@ -10,35 +10,38 @@
 @endsection
 
 @section('content')
+
+
+
     <!-- Start Grid -->
     <section class="bg-light" id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">   Welcome {{ Auth::user()->name }}</h2>
+                    <h2 class="section-heading text-uppercase"> Welcome {{ Auth::user()->name }}</h2>
                     <h3 class="section-subheading text-muted"> {{ date('Y-m-d H:i:s') }}</h3>
                 </div>
             </div>
             <div class="row">
-                <div class="infinite-scroll">
-            @foreach($articles as $article)
-                <!-- start item1 -->
 
-                    <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1" id="{{ $article->id }}"
-                           target="{{ $article->type_id }}">
-                            <div class="portfolio-hover">
-                                <div class="portfolio-hover-content">
-                                    <i class="fa fa-plus fa-3x"></i>
-                                </div>
-                            </div>
-                            <img class="img-fluid"
-                                 src="{{ asset('storage/images/'.$article->cover) }}"
+
+                <div class="infinite-scroll">
+
+
+                    @foreach($articles as $article)
+
+
+                        <span class="col-md-4 col-sm-6 portfolio-item">
+
+                        <h4 class="media-heading">
+                            <img class="img-fluid avatar"
+                                 src="{{ asset('storage/images/avatars/'.$article->user->avatar) }}"
                                  alt="">
-                        </a>
-                        <div class="portfolio-caption">
+                            {{ $article->user->name }}
+                            <small>{{ $article->created_at->diffForHumans() }}</small>
+                             <div class="portfolio-caption">
                             <h4>{{ $article->title }}</h4>
-                            <p class="text-muted">
+                            <p class="badge badge-secondary" >
                                 @if($article->type_id==1)
                                     Rumor
                                 @else
@@ -46,16 +49,28 @@
                                 @endif
                             </p>
                         </div>
-                    </div>
+                        </h4>
+                            {{ $article->body }}
+                            <a data-toggle="modal" href="#portfolioModal1"
+                               id="{{ $article->id }}"
+                               target="{{ $article->type_id }}">
+
+                                <div class="text-right">
+                                    <button class="btn btn-success">Read More</button>
+                                </div>
+                        </a>
+
+                            <hr style="margin-top:5px;">
+                        </span>
 
 
-                    <!-- end item1 -->
-                @endforeach
+
+                    @endforeach
+
+                    {{ $articles->links() }}
 
 
-                {{ $articles->links() }}
                 </div>
-
             </div>
         </div>
     </section>
@@ -117,14 +132,14 @@
 
     <script type="text/javascript">
         $('ul.pagination').hide();
-        $(function() {
+        $(function () {
             $('.infinite-scroll').jscroll({
                 autoTrigger: true,
                 loadingHtml: '<img class="center-block" src="media/loading.gif" alt="Loading..." />',
                 padding: 0,
                 nextSelector: '.pagination li.active + li a',
                 contentSelector: 'div.infinite-scroll',
-                callback: function() {
+                callback: function () {
                     $('ul.pagination').remove();
                 }
             });
