@@ -24,7 +24,12 @@ class ProfileController extends Controller
 
             if ($request->hasFile('avatar')) {
                 $avatar_file = $request->file('avatar');
+
+
                 Image::make($avatar_file)->resize(300, 300)->save(public_path('/storage/images/avatars/' . $avatar_file->getClientOriginalName()));
+
+
+
                 $inputs['avatar'] = $avatar_file->getClientOriginalName();
                 $user->update($inputs);
             }

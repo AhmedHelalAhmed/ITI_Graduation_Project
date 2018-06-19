@@ -12,8 +12,11 @@
 */
 
 Route::get('/', function () {
-    $info = \App\Article::where("type_id", "1")->orderBy("created_at")->limit("6")->get();
+    $info = \App\Article::where("type_id", "1")->orderBy("created_at","DESC")->limit(4)->get();
     return view('welcome', ['info' => $info,]);
+
+
+
 });
 
 //login and register

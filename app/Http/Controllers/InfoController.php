@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Tag;
 use App\Vote;
+use Image;
 
 
 class InfoController extends BaseController
@@ -77,8 +78,11 @@ class InfoController extends BaseController
         //for cover
         if ($request->hasFile('cover')) {
             $cover_file = $request->file('cover');
+            //change the name of the file
             $data['cover'] = $this->_get_file_stored_name($cover_file);
-            Storage::putFileAs('public/images', $cover_file, $data['cover']);
+            //resize the file
+            Image::make($cover_file)->resize(650, 402)->save();
+            Storage::putFileAs('public/images/', $cover_file, $data['cover']);
         }
         //store the data
         $article = Article::create($data);

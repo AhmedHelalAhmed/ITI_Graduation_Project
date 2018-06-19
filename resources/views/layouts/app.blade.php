@@ -24,6 +24,11 @@
     <!-- End Global Style -->
 
 
+    <!-- font-awesome -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+            rel="stylesheet"  type='text/css'>
+    <!-- font-awesome  -->
+
     <!-- Start Style -->
 @yield('style')
 <!-- End Style -->
@@ -58,9 +63,49 @@
 
 
 <!-- Start Footer -->
+<!-- Footer -->
 <footer>
-    Copyright 2018 © All Right Reserved to ITI
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">
+                        Copyright &copy; All Right Reserved to ITI
+                </span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li class="list-inline-item">
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </footer>
+
+
 <!-- End Footer-->
 
 <!-- Start Bootstrap 4.1 body -->
