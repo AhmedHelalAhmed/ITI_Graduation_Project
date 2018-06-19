@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $articles=Article::with("user")->orderBy('created_at', 'DESC')->paginate(6);
+        $articles=Article::orderBy('created_at', 'DESC')->paginate(6);
         return view('home', ['articles' => $articles,]);
     }
 }
