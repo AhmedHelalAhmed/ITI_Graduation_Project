@@ -41,7 +41,7 @@
                             <small>{{ $article->created_at->diffForHumans() }}</small>
                              <div class="portfolio-caption">
                             <h4>{{ $article->title }}</h4>
-                            <p class="badge badge-secondary" >
+                            <p class="badge badge-secondary">
                                 @if($article->type_id==1)
                                     Rumor
                                 @else
@@ -51,15 +51,16 @@
                         </div>
                         </h4>
                             {{ $article->body }}
-                            <a data-toggle="modal" href="#portfolioModal1"
-                               id="{{ $article->id }}"
-                               target="{{ $article->type_id }}">
+                            <div class="text-right">
+                                <a data-toggle="modal" href="#portfolioModal1"
+                                   id="{{ $article->id }}"
+                                   target="{{ $article->type_id }}">
 
-                                <div class="text-right">
-                                    <button class="btn btn-success">Read More</button>
-                                </div>
-                        </a>
 
+                                        <button class="btn btn-success">Read More</button>
+
+                                </a>
+                            </div>
                             <hr style="margin-top:5px;">
                         </span>
 
