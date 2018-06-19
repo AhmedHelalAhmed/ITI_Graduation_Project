@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 
+@section('title')
+ <title>Home</title>
+@endsection
 
 @section('style')
     <!-- Start custom -->
@@ -51,7 +54,7 @@
                         </div>
                         </h4>
                             {{ $article->body }}
-                            <div class="text-right">
+                            <div class="text-right container">
                                 <a data-toggle="modal" href="#portfolioModal1"
                                    id="{{ $article->id }}"
                                    target="{{ $article->type_id }}">
