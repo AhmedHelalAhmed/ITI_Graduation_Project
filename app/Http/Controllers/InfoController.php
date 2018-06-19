@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Rate;
 use App\Type;
 use Illuminate\Http\Request;
 use App\Category;

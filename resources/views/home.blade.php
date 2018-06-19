@@ -2,7 +2,7 @@
 
 
 @section('title')
- <title>Home</title>
+    <title>Home</title>
 @endsection
 
 @section('style')
@@ -49,12 +49,16 @@
                                     Rumor
                                 @else
                                     Question
-                                @endif
-                            </p>
+                                 @endif
+
+                                                <span class="badge badge-success">{{ \App\Vote::all()->where("article_id","==",$article->id )->where("vote",'=',1)->count() }}</span>
+                                                <span class="badge badge-danger">{{ \App\Vote::all()->where("article_id","==",$article->id )->where("vote",'=',0)->count() }}</span>
+
+                                 </p>
                         </div>
                         </h4>
                             {{ $article->body }}
-                            <div class="text-right container">
+                            <div class="text-right container " id="portfolio">
                                 <a data-toggle="modal" href="#portfolioModal1"
                                    id="{{ $article->id }}"
                                    target="{{ $article->type_id }}">

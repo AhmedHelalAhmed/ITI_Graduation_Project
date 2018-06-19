@@ -88,8 +88,11 @@
                                     <!-- Start Rate -->
                                     @auth
                                         <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="badge badge-success">{{ \App\Vote::all()->where("article_id","==",$info_element->id )->where("vote",'=',1)->count() }}</span>
+                                                <span class="badge badge-danger">{{ \App\Vote::all()->where("article_id","==",$info_element->id )->where("vote",'=',0)->count() }}</span>
+                                            </div>
                                             <div id="{{ $info_element->id }}">
-
                                                 <button type="button" class="btn btn-sm btn-outline-success vote">
                                                     {{  Auth::user()->votes()->where('article_id', $info_element->id)->first() ? Auth::user()->votes()->where('article_id', $info_element->id)->first()->vote == 1 ? '-' : '+1' : '+1' }}
                                                 </button>
