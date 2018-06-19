@@ -10,14 +10,13 @@
 @endsection
 
 @section('content')
-
     <!-- Start Grid -->
     <section class="bg-light" id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">   Welcome {{ Auth::user()->name }}</h2>
+                    <h3 class="section-subheading text-muted"> {{ date('Y-m-d H:i:s') }}</h3>
                 </div>
             </div>
             <div class="row">
@@ -85,7 +84,7 @@
                                 <div id="myContent"></div>
                                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                                     <i class="fa fa-times"></i>
-                                    Close Project
+                                    Close
                                 </button>
                             </div>
                         </div>

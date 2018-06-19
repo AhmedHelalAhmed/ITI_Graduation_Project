@@ -14,7 +14,7 @@ class QuestionsController extends InfoController
 
     public function index()
     {
-        $questions = Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 2)->paginate(3);
+        $questions = Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 2)->paginate(9);
         return view('questions.index', ['questions' => $questions]);
     }
 
