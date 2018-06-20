@@ -17,10 +17,15 @@ class BaseController extends Controller
         $categories = Category::all();
         $users = User::all();
         $articles = Article::all();
+        $recent_rumors=Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 1)->paginate(12);
+        $recent_questions=Article::with("user")->orderBy('created_at', 'DESC')->where('type_id', '=', 2)->paginate(12);
         // Sharing
         View::share('tags', $tags);
         View::share('categories', $categories);
         View::share('users', $users); // for admin dashboard - enhance
         View::share('articles', $articles); // for admin dashboard - enhance
+        View::share('recent_rumors', $recent_rumors); // for sidebar
+        View::share('recent_questions', $recent_questions); // for sidebar
+
     }
 }

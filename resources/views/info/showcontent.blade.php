@@ -43,7 +43,7 @@
             <!-- Start Tags -->
             <span class="tags">
                     @foreach($info->tags as $tag)
-                        <a href="#" class="btn-secondary rounded mr-2 p-2">{{ '#'.$tag->name }}</a>
+                        <a href="{{ url('/tags/'.$tag->id) }}" class="btn-secondary rounded mr-2 p-2">{{ '#'.$tag->name }}</a>
                         @endforeach
                 </span>
             <!-- Start Tags -->
