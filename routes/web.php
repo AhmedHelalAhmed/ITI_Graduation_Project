@@ -75,6 +75,8 @@ Route::get('tagsdatatables', 'TagsDataTablesController@index')
 //tags
 Route::resource('tags', 'TagsController',['except' => ['show']])->middleware('auth');
 
-
+//contact form
+Route::get('/contact', 'ContactController@show');
+Route::post('/contact',  'ContactController@mailToAdmin');
 
 

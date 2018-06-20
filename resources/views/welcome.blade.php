@@ -18,6 +18,18 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" media="all"
           type="text/css"/>
     <!-- End Custom Fonts -->
+
+
+    <!-- for contact us -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- for contact us -->
+    <!-- csrfToken -->
+    <script>
+        window.Laravel = {!! json_encode([
+                'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
+    <!-- csrfToken -->
 @endsection
 
 @section('content')
@@ -230,25 +242,27 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                    <form id="contactForm" name="sentMessage"  method="POST" novalidate="novalidate">
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" id="name" type="text" placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name.">
+                                    {{ csrf_field() }}
+                                    <input class="form-control" id="name" type="text"  placeholder="Your Name *" required="required" data-validation-required-message="Please enter your name.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" id="email" type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address.">
+                                    <input class="form-control" id="email"  type="email" placeholder="Your Email *" required="required" data-validation-required-message="Please enter your email address.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number.">
+                                    <input class="form-control" id="phone"  type="tel" placeholder="Your Phone *" required="required" data-validation-required-message="Please enter your phone number.">
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
+                                    <textarea class="form-control"  id="message" placeholder="Your Message *" required="required" data-validation-required-message="Please enter a message."></textarea>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -269,13 +283,7 @@
 @endsection
 
 @section('include_files_body')
-    <!-- change slider ever 1 second -->
-    <script>
-        $('.carousel').carousel({
-            interval: 2500
-        })
-    </script>
-    <!-- change slider ever 1 second -->
+
 
 
 
