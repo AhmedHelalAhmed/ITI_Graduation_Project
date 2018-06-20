@@ -160,48 +160,38 @@
 
         $(function () {
 
+                $(document).on('click', '.btnviewmore', function() {
 
-            $(".btnviewmore").on("click", function () {
+                    let targetModalId = this.id;
 
-                let targetModalId = this.id;
+                    let targetModalType = $(this).attr('target');
 
-                let targetModalType = $(this).attr('target');
-
-                let myUrl;
-
-
-                if (targetModalType === 1) {
-
-                    myUrl = '/question/' + targetModalId;
-
-                }
-                else {
-                    myUrl = '/info/' + targetModalId;
-
-                }
+                    let myUrl;
 
 
-                $.ajax({
-                    url: myUrl,
-                    type: 'GET',
-                    data: {
-                        '_method': 'show'
-                    },
-                    success: res => {
-                        $("#myContent").html(res);
+                    if (targetModalType === 1) {
+
+                        myUrl = '/question/' + targetModalId;
 
                     }
+                    else {
+                        myUrl = '/info/' + targetModalId;
+
+                    }
+
+
+                    $.ajax({
+                        url: myUrl,
+                        type: 'GET',
+                        data: {
+                            '_method': 'show'
+                        },
+                        success: res => {
+                            $("#myContent").html(res);
+
+                        }
+                    });
                 });
-
-
-            });
-
-
-
-
-
-
-
 
         });
     </script>
