@@ -1,4 +1,21 @@
 @extends('layouts.app')
+@section('title')
+    <title>Login</title>
+    @endsection
+@section('style')
+    <style>
+        .twitter {
+            background-color: #55ACEE;
+            color: white;
+        }
+        .linkedin {
+            background-color: #2b7ab6;
+            color: white;
+        }
+    </style>
+    @endsection
+
+
 
 @section('content')
     <div class="container" style="padding: 100px">
@@ -71,11 +88,19 @@
                             <hr/>
 
                             <div class="row">
-                                <label class="col-md-4 col-form-label text-md-right">Login With</label>
-                                <div class="col-md-6">
-                                    <a href="/auth/twitter/">Twitter</a>
-                                    <a href="/auth/linkedin/">LinkedIn</a>
-                                </div>
+
+
+                                    <div class="col text-center">
+                                        <a href="/auth/twitter/" class="twitter btn">
+                                            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                                        </a>
+                                        <a href="/auth/linkedin/" class="linkedin btn">
+                                            <i class="fa fa-linkedin fa-fw"></i> Login with LinkedIn
+                                        </a>
+                                    </div>
+
+
+
                             </div>
                         </form>
                     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>{{ config('Rumors', 'Rumors') }}</title>
+    <title>{{ config('SHAA3At', 'SHAA3At') }}</title>
 @endsection
 
 @section('style')

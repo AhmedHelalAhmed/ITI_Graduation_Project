@@ -33,20 +33,7 @@
                 <div class="row">
                     @foreach($user->articles as $article)
                         <p class="col-12"><a href="/info/{{ $article->id }}">{{ $article->title }}</a></p>
-
                     @endforeach
-                </div>
-            </section>
-            <section>
-                <h3>Friends</h3>
-                <div class="row">
-                    <p class="col">#</p>
-                </div>
-            </section>
-            <section>
-                <h3>Categories subscription</h3>
-                <div class="row">
-                    <p class="col">#</p>
                 </div>
             </section>
         </article>

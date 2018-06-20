@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark
  fixed-top">
-    <a class="navbar-brand " href="{{ url('/') }}">Commons</a>
+    <a class="navbar-brand " href="{{ url('/') }}"><img src="{{ asset('media/logo.png') }}" alt="SHAA3AT" id="logo" style="width: 55px;height: 55px;border-radius: 20%"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,11 +26,11 @@
         <ul class="navbar-nav">
 
 
-            <li class="nav-item">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </li>
+            {{--<li class="nav-item">--}}
+                {{--<form class="form-inline my-2 my-lg-0">--}}
+                    {{--<input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">--}}
+                {{--</form>--}}
+            {{--</li>--}}
 
 
             @guest
@@ -48,15 +48,14 @@
 
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item disabled" href="#">{{ Auth::user()->name }}</a>
+                        <a class="dropdown-item disabled"
+                           href="#">{{ Auth::user()->name }}</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Friends</a>
                         <a class="dropdown-item" href="{{ url('/profile') }}">My profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My categories</a>
 
 
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ url( '/users/'. Auth::user()->id ) }}">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -72,7 +71,11 @@
 
                 </li>
 
-                <input class="btn btn-outline-success my-2 my-sm-0" value="Write" type="submit"/>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{{ url('/') }}">
+
+                   <span style="font-size: 1.5em;">&#128363;</span>
+
+                </a>
             @endguest
 
 
