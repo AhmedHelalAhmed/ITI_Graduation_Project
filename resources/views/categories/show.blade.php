@@ -2,7 +2,7 @@
 
 
 @section('title')
-    <title>Home</title>
+    <title>Categories</title>
 @endsection
 
 @section('style')
@@ -28,55 +28,36 @@
             <div class="row">
 
 
-                <div class="infinite-scroll">
+            @foreach( $articles as $article )
 
-
-                    @foreach($articles as $article)
-
-
-                        <span class="col-md-4 col-sm-6 portfolio-item">
-
-                        <h4 class="media-heading">
-                            <img class="img-fluid avatar"
-                                 src="{{ asset('storage/images/avatars/'.$article->user->avatar) }}"
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                            <div class="portfolio-hover" id="{{ $article->id }}"
+                                 target="{{ $article->type_id }}">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-plus fa-3x"></i>
+                                </div>
+                            </div>
+                            <img class="img-fluid"
+                                 src="{{ asset('storage/images/'.$article->cover) }}"
                                  alt="">
-                            {{ $article->user->name }}
-                            <small>{{ $article->created_at->diffForHumans() }}</small>
-                             <div class="portfolio-caption">
+                        </a>
+                        <div class="portfolio-caption">
                             <h4>{{ $article->title }}</h4>
-                            <p class="badge badge-secondary">
+                            <p class="text-muted">
                                 @if($article->type_id==1)
                                     Rumor
                                 @else
                                     Question
-                                 @endif
-
-                                                <span class="badge badge-success">{{ \App\Vote::all()->where("article_id","==",$article->id )->where("vote",'=',1)->count() }}</span>
-                                                <span class="badge badge-danger">{{ \App\Vote::all()->where("article_id","==",$article->id )->where("vote",'=',0)->count() }}</span>
-
-                                 </p>
+                                @endif
+                            </p>
                         </div>
-                        </h4>
-                            {{ $article->body }}
-                            <div class="text-right container " id="portfolio">
-                                <a data-toggle="modal" href="#portfolioModal1">
+                    </div>
 
-
-                                        <button class="btn btn-success btnviewmore" id="{{ $article->id }}" target="{{ $article->type_id }}">Read More</button>
-
-                                </a>
-                            </div>
-                            <hr style="margin-top:5px;">
-                        </span>
+             @endforeach
 
 
 
-                    @endforeach
-
-                    {{ $articles->links() }}
-
-
-                </div>
             </div>
         </div>
     </section>
@@ -130,30 +111,6 @@
 @section('include_files_body')
 
 
-    <!-- Start infinite-scroll -->
-
-    <!-- Start jscroll -->
-    <script src="/js/jquery.jscroll.min.js"></script>
-    <!-- End jscroll -->
-
-    <script type="text/javascript">
-        $('ul.pagination').hide();
-        $(function () {
-            $('.infinite-scroll').jscroll({
-                autoTrigger: true,
-                loadingHtml: '<img class="center-block" src="media/loading.gif" alt="Loading..." />',
-                padding: 0,
-                nextSelector: '.pagination li.active + li a',
-                contentSelector: 'div.infinite-scroll',
-                callback: function () {
-                    $('ul.pagination').remove();
-                }
-            });
-        });
-    </script>
-
-
-    <!-- End infinite-scroll -->
 
     <!-- Start modal -->
     <script>
@@ -161,13 +118,15 @@
         $(function () {
 
 
-            $(".btnviewmore").on("click", function () {
+            $(".portfolio-hover").on("click", function () {
 
                 let targetModalId = this.id;
 
-                let targetModalType = $(this).attr('target');
+                let targetModalType = $(this).attr('data');
 
                 let myUrl;
+
+                console.log(targetModalType);
 
 
                 if (targetModalType === 1) {
@@ -179,6 +138,7 @@
                     myUrl = '/info/' + targetModalId;
 
                 }
+
 
 
                 $.ajax({

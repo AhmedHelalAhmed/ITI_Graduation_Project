@@ -62,7 +62,7 @@ Route::resource('questions', 'QuestionsController')->middleware('auth');
 
 
 //categories
-Route::resource('categories', 'CategoriesController',['except' => ['show']])->middleware('auth');
+Route::resource('categories', 'CategoriesController')->middleware('auth');
 
 //categories dataTable helper
 Route::get('categoriesdatatables', 'CategoriesDataTablesController@index')

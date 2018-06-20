@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+
 use Illuminate\Http\Request;
 use App\Tag;
 use Illuminate\Support\Facades\Session;
@@ -74,7 +76,7 @@ class TagsController extends BaseController
         try {
             $tag = Tag::findOrFail($id);
         } catch (ModelNotFoundException $e) {
-            return Response::view('errors.404');
+            return view('errors.404');
         }
         $tag->update($request->all());
         return redirect(route('tags.index'));
@@ -90,5 +92,17 @@ class TagsController extends BaseController
     {
         Tag::destroy($id);
         return back();
+    }
+
+
+    public function show($id)
+    {
+        try {
+            $tag = Tag::findOrFail($id);
+            $articles=$tag->articles;
+        } catch (ModelNotFoundException $e) {
+            return view('errors.404');
+        }
+        return view('tags.show',["articles"=>$articles]);
     }
 }

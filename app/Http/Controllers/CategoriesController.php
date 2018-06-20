@@ -89,4 +89,15 @@ class CategoriesController extends Controller
         Category::destroy($id);
         return back();
     }
+
+    public function show($id)
+    {
+        try {
+            $category = Category::findOrFail($id);
+            $articles=$category->articles;
+        } catch (ModelNotFoundException $e) {
+            return view('errors.404');
+        }
+        return view('categories.show',["articles"=>$articles]);
+    }
 }
