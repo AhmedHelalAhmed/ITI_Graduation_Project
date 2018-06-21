@@ -169,6 +169,8 @@ return [
         Hootlex\Friendships\FriendshipsServiceProvider::class,
         //for DataTables
         Yajra\DataTables\DataTablesServiceProvider::class,
+        //for authorization
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

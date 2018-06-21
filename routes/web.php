@@ -12,9 +12,8 @@
 */
 
 Route::get('/', function () {
-    $info = \App\Article::where("type_id", "1")->orderBy("created_at","DESC")->limit(4)->get();
+    $info = \App\Article::where("type_id", "1")->orderBy("created_at", "DESC")->limit(4)->get();
     return view('welcome', ['info' => $info,]);
-
 
 
 });
@@ -54,7 +53,7 @@ Route::get('admin', 'AdminController@index')->name('admin.index')->middleware('a
 
 
 //users - for make to each user profile which can be access by another user
-Route::get('users/{id}', 'UsersController@show')->name('users.show');
+Route::get('users/{id}', 'UserController@show')->name('users.show');
 
 
 //questions
@@ -73,10 +72,18 @@ Route::get('tagsdatatables', 'TagsDataTablesController@index')
     ->name('tagsdatatables.index');
 
 //tags
-Route::resource('tags', 'TagsController',['except' => ['show']])->middleware('auth');
+Route::resource('tags', 'TagsController', ['except' => ['show']])->middleware('auth');
 
 //contact form
 Route::get('/contact', 'ContactController@show');
-Route::post('/contact',  'ContactController@mailToAdmin');
+Route::post('/contact', 'ContactController@mailToAdmin');
 
 
+Route::group(['middleware' => ['role:super-admin', 'auth']], function () {
+//authrization
+    Route::resource('admin/permission', 'Admin\\PermissionController');
+//authrization
+    Route::resource('admin/role', 'Admin\\RoleController');
+//crud for users
+    Route::resource('admin/user', 'Admin\\UserController');
+});

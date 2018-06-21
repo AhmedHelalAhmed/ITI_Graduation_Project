@@ -131,11 +131,34 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
+
+
+
+
                     <ul class="treeview-menu">
                         <li><a href="{{ route('categories.index') }}"><i class="fa fa-circle-o"></i> Categories</a></li>
                         <li><a href="{{ route('tags.index') }}"><i class="fa fa-circle-o"></i> Tags</a></li>
+
+                        <li><a href="{{ url('admin/permission') }}"><i class="fa fa-circle-o"></i> Permissions</a></li>
+                        <li><a href="{{ url('admin/role') }}"><i class="fa fa-circle-o"></i> Roles</a></li>
+
+                        <li><a href="{{ url('admin/user') }}"><i class="fa fa-circle-o"></i> Users</a></li>
+
                     </ul>
+
+
+
                 </li>
+
+
+
+
+
+
+
+
+
+
                 <!-- add forms -->
 
                 <li><a href="https://github.com/AhmedHelalAhmed/My-project" target="_blank"><i class="fa fa-book"></i>
