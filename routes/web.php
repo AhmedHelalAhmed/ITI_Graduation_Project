@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //home page
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
 //info
@@ -30,9 +30,9 @@ Route::get('/info', 'InfoController@index')->name('info.index');
 Route::get('info/create', 'InfoController@create')->name('info.create')->middleware('auth');
 Route::post('info', 'InfoController@store')->name('info.store');
 Route::get('info/{id}', 'InfoController@show')->name('info.show');
-Route::get('/info/{id}/edit', 'InfoController@edit')->name('info.edit')->middleware('auth');
+
 Route::put('/info/{id}', 'InfoController@update')->name('info.update')->middleware('auth');
-Route::delete('/info/{id}', 'InfoController@destroy')->name('info.destroy')->middleware('auth');
+
 
 
 //profile - for every user to update it's profile
@@ -45,11 +45,9 @@ Route::post('/vote', 'InfoController@articleVoteArticle')->name('vote');
 
 
 //tags
-Route::resource('tags', 'TagsController', ['except' => ['create']])->middleware('auth');
+Route::resource('tags', 'TagsController', ['except' => ['create']]);
 
 
-//admin
-Route::get('admin', 'AdminController@index')->name('admin.index')->middleware('auth');
 
 
 //users - for make to each user profile which can be access by another user
@@ -57,11 +55,11 @@ Route::get('users/{id}', 'UserController@show')->name('users.show');
 
 
 //questions
-Route::resource('questions', 'QuestionsController')->middleware('auth');
+Route::resource('questions', 'QuestionsController');
 
 
 //categories
-Route::resource('categories', 'CategoriesController')->middleware('auth');
+Route::resource('categories', 'CategoriesController');
 
 //categories dataTable helper
 Route::get('categoriesdatatables', 'CategoriesDataTablesController@index')
@@ -72,7 +70,7 @@ Route::get('tagsdatatables', 'TagsDataTablesController@index')
     ->name('tagsdatatables.index');
 
 //tags
-Route::resource('tags', 'TagsController', ['except' => ['show']])->middleware('auth');
+Route::resource('tags', 'TagsController', ['except' => ['show']]);
 
 //contact form
 Route::get('/contact', 'ContactController@show');
@@ -86,4 +84,10 @@ Route::group(['middleware' => ['role:super-admin', 'auth']], function () {
     Route::resource('admin/role', 'Admin\\RoleController');
 //crud for users
     Route::resource('admin/user', 'Admin\\UserController');
+
+    Route::get('/info/{id}/edit', 'InfoController@edit')->name('info.edit')->middleware('auth');
+    Route::delete('/info/{id}', 'InfoController@destroy')->name('info.destroy')->middleware('auth');
+    //admin
+    Route::get('admin', 'AdminController@index')->name('admin.index')->middleware('auth');
+
 });

@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Hootlex\Friendships\Traits\Friendable;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Support\Facades\Hash;
+
 
 
 class User extends Authenticatable
@@ -60,12 +60,7 @@ class User extends Authenticatable
     public function votes(){
         return $this->hasMany(Vote::class);
     }
-    public function setPasswordAttribute($value)
-    {
-        if($value){
-            $this->attributes['password']= app('hash')->needsRehash($value)?Hash::make($value):$value;
-        }
-    }
+
 
     use Friendable;
 }

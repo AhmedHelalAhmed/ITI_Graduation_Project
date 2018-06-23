@@ -21,7 +21,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading text-uppercase"> Welcome {{ Auth::user()->name }}</h2>
+                    <h2 class="section-heading text-uppercase"> Welcome </h2>
                     <h3 class="section-subheading text-muted"> {{ date('Y-m-d H:i:s') }}</h3>
                 </div>
             </div>
