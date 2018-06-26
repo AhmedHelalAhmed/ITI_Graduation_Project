@@ -28,11 +28,13 @@
             <ul class="navbar-nav">
 
 
-                {{--<li class="nav-item">--}}
-                {{--<form class="form-inline my-2 my-lg-0">--}}
-                {{--<input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">--}}
-                {{--</form>--}}
-                {{--</li>--}}
+                <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0" action="/search" method="POST" role="search">
+{{ csrf_field() }}
+                <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search" name="q">
+                </form>
+
+                </li>
 
 
                 @guest

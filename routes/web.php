@@ -11,8 +11,11 @@
 |
 */
 
+use Illuminate\Support\Facades\Input;
+use \App\Article;
+
 Route::get('/', function () {
-    $info = \App\Article::where("type_id", "1")->orderBy("created_at", "DESC")->limit(4)->get();
+    $info = Article::where("type_id", "1")->orderBy("created_at", "DESC")->limit(4)->get();
     return view('welcome', ['info' => $info,]);
 
 
@@ -34,7 +37,6 @@ Route::get('info/{id}', 'InfoController@show')->name('info.show');
 Route::put('/info/{id}', 'InfoController@update')->name('info.update')->middleware('auth');
 
 
-
 //profile - for every user to update it's profile
 Route::get('profile/', 'ProfileController@index')->name('profile.index');
 Route::put('profile/{id}', 'ProfileController@update')->name('profile.update')->middleware('auth');
@@ -46,8 +48,6 @@ Route::post('/vote', 'InfoController@articleVoteArticle')->name('vote');
 
 //tags
 Route::resource('tags', 'TagsController', ['except' => ['create']]);
-
-
 
 
 //users - for make to each user profile which can be access by another user
@@ -93,12 +93,27 @@ Route::group(['middleware' => ['role:super-admin', 'auth']], function () {
 });
 
 
-Route::get('/markAsRead',function(){
-   auth()->user()->unreadNotifications->markAsRead();
+Route::get('/markAsRead', function () {
+    auth()->user()->unreadNotifications->markAsRead();
 });
 
 
+//comments
+Route::get('/laravellikecomment/comment/add', 'CommentsController@add');
+Route::get('/laravellikecomment/comment/add', 'CommentsController@add');
 
-Route::get('/laravellikecomment/comment/add','CommentsController@add');
+//search
+Route::post('/search', function () {
+    $q = Input::get('q');
+    $articles = Article::where('title', 'like', '%' . $q . '%')->orWhere('body', 'like', '%' . $q . '%')->get();
+    if (count($articles) > 0) {
+        return view('search', ['articles' => $articles]);
 
-Route::get('/laravellikecomment/comment/add','CommentsController@add');
+    } else {
+        return view('search');
+    }
+
+
+});
+
+
