@@ -117,6 +117,6 @@ class CategoriesController extends Controller
         } catch (ModelNotFoundException $e) {
             return view('errors.404');
         }
-        return view('categories.show', ["articles" => $articles]);
+        return view('categories.show', ["articles" => $articles,'category'=>$category]);
     }
 }

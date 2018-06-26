@@ -103,6 +103,6 @@ class TagsController extends BaseController
         } catch (ModelNotFoundException $e) {
             return view('errors.404');
         }
-        return view('tags.show',["articles"=>$articles]);
+        return view('tags.show',["articles"=>$articles,"tag"=>$tag]);
     }
 }

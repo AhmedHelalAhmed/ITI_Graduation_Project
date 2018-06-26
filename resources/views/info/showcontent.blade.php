@@ -1,6 +1,12 @@
 <div class="publishes container">
     @if(isset($info))
     <article>
+
+<div class="container">
+    <a class=" btn btn-primary" href="{{"/info/".$info->id.'/edit'}}">Edit</a>
+</div>
+
+
         <header>
             <!-- Start Title -->
             <h1 class="mt-4"> {{ $info->title }} </h1>
