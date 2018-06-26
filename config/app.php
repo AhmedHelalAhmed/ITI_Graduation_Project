@@ -158,9 +158,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
         //package for like comment and reply
         risul\LaravelLikeComment\LikeCommentServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
         //for image intervention
         Intervention\Image\ImageServiceProvider::class,
         //for social login

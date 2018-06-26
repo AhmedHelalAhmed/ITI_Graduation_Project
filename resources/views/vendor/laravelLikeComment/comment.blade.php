@@ -31,10 +31,10 @@ $GLOBALS['commentClass'] = -1;
         <div class="comment show-{{ $comment->item_id }}-{{ (int)($GLOBALS['commentClass'] / 5) }}"
              id="comment-{{ $comment->id }}">
             <a class="avatar">
-                <img src="{{ $comment->avatar }}">
+                <img src="{{ '/storage/images/avatars/'.$comment->avatar }}">
             </a>
             <div class="content">
-                <a class="author" url="{{ $comment->url or '' }}"> {{ $comment->name }} </a>
+                <a class="author" href="{{ '/users/'.$comment->user_id }}"> {{ $comment->name }} </a>
                 <div class="metadata">
                     <span class="date">{{ $comment->updated_at->diffForHumans() }}</span>
                 </div>
@@ -70,7 +70,7 @@ $GLOBALS['commentClass'] = -1;
                 echo "</div>";
                 }
 
-                $comments = \risul\LaravelLikeComment\Controllers\CommentController::getComments($comment_item_id);
+                $comments = App\Http\Controllers\CommentsController::getComments($comment_item_id);
                 foreach ($comments as $comment) {
                     if (!isset($GLOBALS['commentVisit'][$comment->id])) {
                         dfs($comments, $comment);

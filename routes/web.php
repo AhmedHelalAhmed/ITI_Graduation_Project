@@ -91,3 +91,14 @@ Route::group(['middleware' => ['role:super-admin', 'auth']], function () {
     Route::get('admin', 'AdminController@index')->name('admin.index')->middleware('auth');
 
 });
+
+
+Route::get('/markAsRead',function(){
+   auth()->user()->unreadNotifications->markAsRead();
+});
+
+
+
+Route::get('/laravellikecomment/comment/add','CommentsController@add');
+
+Route::get('/laravellikecomment/comment/add','CommentsController@add');

@@ -108,6 +108,12 @@
 
 <!-- End Footer-->
 
+
+
+
+
+
+
 <!-- Start Bootstrap 4.1 body -->
 @include('layouts.body_bootstrap4')
 <!-- end Bootstrap 4.1 body -->
@@ -115,6 +121,12 @@
 <!-- Start include in body -->
 @yield('include_files_body')
 <!-- end include in body -->
+
+
+
+<!-- Start markasread -->
+<script src="/js/markasread.js"></script>
+<!-- end markasread -->
 
 </body>
 

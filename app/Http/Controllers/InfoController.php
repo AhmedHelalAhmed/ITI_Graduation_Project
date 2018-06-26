@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Notifications\CommentArticle;
 use App\Rate;
 use App\Type;
 use Illuminate\Http\Request;
