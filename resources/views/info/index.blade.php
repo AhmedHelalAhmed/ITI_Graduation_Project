@@ -111,7 +111,7 @@
 
                                     <small class="text-muted">
                                         <time datatime="{{  $info_element->created_at }}">
-                                            {{ Carbon\Carbon::parse($info_element->created_a)->toDayDateTimeString() }}
+                                            {{ Carbon\Carbon::parse($info_element->created_at)->toDayDateTimeString() }}
                                         </time>
                                     </small>
                                 </div>

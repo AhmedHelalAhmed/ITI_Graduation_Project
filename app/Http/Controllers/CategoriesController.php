@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -86,7 +87,25 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
+
+        try {
+            $category = Category::findOrFail($id);
+            $articles = $category->articles;
+            if ($articles) {
+                foreach ($articles as $article) {
+                    Article::destroy($article->id);
+                }
+
+            }
+
+        } catch (ModelNotFoundException $e) {
+            return view('errors.404');
+        }
+
+
         Category::destroy($id);
+
+
         return back();
     }
 
@@ -94,10 +113,10 @@ class CategoriesController extends Controller
     {
         try {
             $category = Category::findOrFail($id);
-            $articles=$category->articles;
+            $articles = $category->articles;
         } catch (ModelNotFoundException $e) {
             return view('errors.404');
         }
-        return view('categories.show',["articles"=>$articles]);
+        return view('categories.show', ["articles" => $articles]);
     }
 }

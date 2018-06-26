@@ -2,13 +2,17 @@
 <aside>
 
 
-
     <section class="links">
 
         <h3>Categories</h3>
         <ul>
             @foreach($categories as $category)
-                <li><a href="{{ url('/categories/'.$category->id) }}">{{ $category->name }}</a></li>
+                <li><a href="{{ url('/categories/'.$category->id) }}">{{ $category->name }}
+                        <span class="badge badge-pill badge-info">{{ count($category->articles) }}</span>
+                    </a>
+
+
+                </li>
             @endforeach
         </ul>
     </section>
@@ -18,7 +22,11 @@
         <h3>Tags</h3>
         <ul>
             @foreach($tags as $tag)
-                <li><a href="{{ url('/tags/'.$tag->id) }}">{{ '#'.$tag->name }}</a></li>
+                <li>
+                    <a href="{{ url('/tags/'.$tag->id) }}">{{ '#'.$tag->name }}
+                        <span class="badge badge-pill badge-info">{{ count($tag->articles) }}</span>
+                    </a>
+                </li>
             @endforeach
         </ul>
     </section>
