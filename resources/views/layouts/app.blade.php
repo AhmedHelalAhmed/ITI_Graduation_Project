@@ -99,6 +99,9 @@
                     <li class="list-inline-item">
                         <a href="#">Terms of Use</a>
                     </li>
+                    <li class="list-inline-item">
+                        <a href="/admin">Admin Area</a>
+                    </li>
                 </ul>
             </div>
         </div>
